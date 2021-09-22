@@ -40,5 +40,10 @@ namespace WinFormAppCursus
             btnVolgende.Enabled = (tabControl1.SelectedIndex < tabControl1.TabCount - 1);
             btnVorige.Enabled = (tabControl1.SelectedIndex > 0);
         }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace WinFormAppCursus
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmTabControl());
+            Application.Run(new fmOpdrachtLabels());
         }
     }
 }
