@@ -30,6 +30,7 @@ namespace WinFormAppCursus
         private void InitializeComponent()
         {
             this.btnToonVenster = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnToonVenster
@@ -42,12 +43,25 @@ namespace WinFormAppCursus
             this.btnToonVenster.UseVisualStyleBackColor = true;
             this.btnToonVenster.Click += new System.EventHandler(this.btnToonVenster_Click);
             // 
+            // button1
+            // 
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button1.Location = new System.Drawing.Point(222, 213);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // frmHoofd
             // 
+            this.AcceptButton = this.btnToonVenster;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.CancelButton = this.button1;
+            this.ClientSize = new System.Drawing.Size(723, 357);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnToonVenster);
             this.Name = "frmHoofd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
@@ -61,6 +75,7 @@ namespace WinFormAppCursus
         #endregion
 
         private System.Windows.Forms.Button btnToonVenster;
+        private System.Windows.Forms.Button button1;
     }
 }
 

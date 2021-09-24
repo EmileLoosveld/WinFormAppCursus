@@ -63,5 +63,10 @@ namespace WinFormAppCursus
         {
 
         }
+
+        private void frmLabels_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

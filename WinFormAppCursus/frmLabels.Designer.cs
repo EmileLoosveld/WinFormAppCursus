@@ -105,6 +105,7 @@ namespace WinFormAppCursus
             this.KeyPreview = true;
             this.Name = "frmLabels";
             this.Text = "frmLabels";
+            this.Load += new System.EventHandler(this.frmLabels_Load_1);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmLabels_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmLabels_KeyPress);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmLabels_KeyUp);

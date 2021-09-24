@@ -34,13 +34,13 @@ namespace WinFormAppCursus
             // 
             // vrachtwagen
             // 
-            this.vrachtwagen.AutoSize = true;
-            this.vrachtwagen.Font = new System.Drawing.Font("Webdings", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.vrachtwagen.Location = new System.Drawing.Point(281, 202);
+            this.vrachtwagen.Font = new System.Drawing.Font("Webdings", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.vrachtwagen.Location = new System.Drawing.Point(259, 155);
             this.vrachtwagen.Name = "vrachtwagen";
-            this.vrachtwagen.Size = new System.Drawing.Size(19, 17);
+            this.vrachtwagen.Size = new System.Drawing.Size(33, 35);
             this.vrachtwagen.TabIndex = 0;
             this.vrachtwagen.Text = "h";
+            this.vrachtwagen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.vrachtwagen.Click += new System.EventHandler(this.vrachtwagen_Click);
             // 
             // fmOpdrachtLabels
@@ -52,8 +52,8 @@ namespace WinFormAppCursus
             this.Controls.Add(this.vrachtwagen);
             this.Name = "fmOpdrachtLabels";
             this.Text = "Label beweegt met pijltjestoetsen";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.fmOpdrachtLabels_KeyDown);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E83964DF-CD24-419C-B3FD-9E7A36475DE0}</ProjectGuid>
+    <ProjectGuid>{1A6F3264-A123-4533-933E-2445B7013BF7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WinFormAppCursus</RootNamespace>
-    <AssemblyName>WinFormAppCursus</AssemblyName>
+    <RootNamespace>OpdrachtButtons</RootNamespace>
+    <AssemblyName>OpdrachtButtons</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,70 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="fmOpdrachtLabels.cs">
+    <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="fmOpdrachtLabels.Designer.cs">
-      <DependentUpon>fmOpdrachtLabels.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmbuttons.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmbuttons.Designer.cs">
-      <DependentUpon>frmbuttons.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmHoofd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmHoofd.Designer.cs">
-      <DependentUpon>frmHoofd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmLabels.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmLabels.Designer.cs">
-      <DependentUpon>frmLabels.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmPanels.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmPanels.Designer.cs">
-      <DependentUpon>frmPanels.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmSubVenster.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmSubVenster.Designer.cs">
-      <DependentUpon>frmSubVenster.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmTabControl.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmTabControl.Designer.cs">
-      <DependentUpon>frmTabControl.cs</DependentUpon>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="fmOpdrachtLabels.resx">
-      <DependentUpon>fmOpdrachtLabels.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmbuttons.resx">
-      <DependentUpon>frmbuttons.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmHoofd.resx">
-      <DependentUpon>frmHoofd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmLabels.resx">
-      <DependentUpon>frmLabels.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmPanels.resx">
-      <DependentUpon>frmPanels.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSubVenster.resx">
-      <DependentUpon>frmSubVenster.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmTabControl.resx">
-      <DependentUpon>frmTabControl.cs</DependentUpon>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

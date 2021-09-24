@@ -16,17 +16,27 @@ namespace WinFormAppCursus
         {
             InitializeComponent();
         }
-
+        int xas, yas;
         private void fmOpdrachtLabels_KeyDown(object sender, KeyEventArgs e)
         {
-            int rechts = 0;
             switch (e.KeyCode)
             {
                 case Keys.Right:
-                    rechts = rechts + 10;
+                    if (xas < ClientSize.Width-vrachtwagen.Width-10) xas += 10;
+                    break;
+                case Keys.Left:
+                    if (xas > 0) xas -= 10;
+                    break;
+                case Keys.Up:
+                    if (yas > 0) yas -= 10;
+                    break;
+                case Keys.Down:
+                    if (yas < ClientSize.Height-vrachtwagen.Height-10) yas += 10;
                     break;
             }
-            this.vrachtwagen = vrachtwagen.LocationChanged(0, 0);
+            vrachtwagen.Left = xas;
+            vrachtwagen.Top = yas;
+            //cliensize, clienwidth
         }
 
         private void vrachtwagen_Click(object sender, EventArgs e)
@@ -34,9 +44,4 @@ namespace WinFormAppCursus
 
         }
     }
-
-    private void fmOpdrachtLabels_Load(object sender, EventArgs e)
-        {
-
-        }
-    }
+}
