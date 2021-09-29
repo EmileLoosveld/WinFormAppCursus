@@ -26,5 +26,23 @@ namespace OpdrachtButtons
         {
 
         }
+
+
+        private void uitlijning_ckeckedChanged(object sender, EventArgs e)
+        {
+            if (chkInvoervak.Checked)
+            {
+                if (rdbLinks.Checked) txtTekst.TextAlign = HorizontalAlignment.Left;
+                if (rdbRechts.Checked) txtTekst.TextAlign = HorizontalAlignment.Right;
+                if (rdbCenter.Checked) txtTekst.TextAlign = HorizontalAlignment.Center;
+            }
+            if (chkLabel.Checked)
+            {
+                if (rdbLinks.Checked) lblLabel.TextAlign = ContentAlignment.MiddleLeft;
+                if (rdbCenter.Checked) lblLabel.TextAlign = ContentAlignment.MiddleCenter;
+                if (rdbRechts.Checked) lblLabel.TextAlign = ContentAlignment.MiddleRight;
+            }
+        }
+
     }
 }
