@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opdracht2Forms", "Opdracht2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpdrachtButtons", "OpdrachtButtons\OpdrachtButtons.csproj", "{1A6F3264-A123-4533-933E-2445B7013BF7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpdrachtTextBoxen", "OpdrachtTextBoxen\OpdrachtTextBoxen.csproj", "{488E6102-2745-4E85-A36A-CB170AF58B8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1A6F3264-A123-4533-933E-2445B7013BF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A6F3264-A123-4533-933E-2445B7013BF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A6F3264-A123-4533-933E-2445B7013BF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{488E6102-2745-4E85-A36A-CB170AF58B8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{488E6102-2745-4E85-A36A-CB170AF58B8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{488E6102-2745-4E85-A36A-CB170AF58B8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{488E6102-2745-4E85-A36A-CB170AF58B8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
