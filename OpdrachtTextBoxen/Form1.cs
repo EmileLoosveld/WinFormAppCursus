@@ -35,13 +35,5 @@ namespace OpdrachtTextBoxen
         {
             this.Close();
         }
-
-        private void btnKleur_Click(object sender, EventArgs e)
-        {
-            int rood = Convert.ToInt32(txtKleurRood.Text);
-            int groen = Convert.ToInt32(txtKleurGroen.Text);
-            int blauw = Convert.ToInt32(txtKleurBlauw.Text);
-            this.BackColor = Color.FromArgb(rood, groen, blauw);
-        }
     }
 }

@@ -44,10 +44,9 @@ namespace OpdrachtButtons
             // 
             // lblLabel
             // 
-            this.lblLabel.Location = new System.Drawing.Point(169, 160);
-            this.lblLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblLabel.Location = new System.Drawing.Point(92, 87);
             this.lblLabel.Name = "lblLabel";
-            this.lblLabel.Size = new System.Drawing.Size(990, 25);
+            this.lblLabel.Size = new System.Drawing.Size(540, 14);
             this.lblLabel.TabIndex = 0;
             this.lblLabel.Text = "tekst";
             this.lblLabel.Click += new System.EventHandler(this.label1_Click);
@@ -55,10 +54,9 @@ namespace OpdrachtButtons
             // txtTekst
             // 
             this.txtTekst.AccessibleDescription = "";
-            this.txtTekst.Location = new System.Drawing.Point(169, 273);
-            this.txtTekst.Margin = new System.Windows.Forms.Padding(6);
+            this.txtTekst.Location = new System.Drawing.Point(92, 148);
             this.txtTekst.Name = "txtTekst";
-            this.txtTekst.Size = new System.Drawing.Size(990, 29);
+            this.txtTekst.Size = new System.Drawing.Size(542, 20);
             this.txtTekst.TabIndex = 1;
             this.txtTekst.Text = "type hier iets";
             this.txtTekst.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -68,11 +66,9 @@ namespace OpdrachtButtons
             this.groupBox1.Controls.Add(this.rdbRechts);
             this.groupBox1.Controls.Add(this.rdbCenter);
             this.groupBox1.Controls.Add(this.rdbLinks);
-            this.groupBox1.Location = new System.Drawing.Point(169, 404);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(6);
+            this.groupBox1.Location = new System.Drawing.Point(92, 219);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBox1.Size = new System.Drawing.Size(367, 380);
+            this.groupBox1.Size = new System.Drawing.Size(200, 206);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Uitlijning";
@@ -81,10 +77,9 @@ namespace OpdrachtButtons
             // 
             this.rdbRechts.AutoSize = true;
             this.rdbRechts.Checked = true;
-            this.rdbRechts.Location = new System.Drawing.Point(44, 227);
-            this.rdbRechts.Margin = new System.Windows.Forms.Padding(6);
+            this.rdbRechts.Location = new System.Drawing.Point(24, 123);
             this.rdbRechts.Name = "rdbRechts";
-            this.rdbRechts.Size = new System.Drawing.Size(93, 29);
+            this.rdbRechts.Size = new System.Drawing.Size(59, 17);
             this.rdbRechts.TabIndex = 2;
             this.rdbRechts.TabStop = true;
             this.rdbRechts.Text = "Rechts";
@@ -94,10 +89,9 @@ namespace OpdrachtButtons
             // rdbCenter
             // 
             this.rdbCenter.AutoSize = true;
-            this.rdbCenter.Location = new System.Drawing.Point(44, 155);
-            this.rdbCenter.Margin = new System.Windows.Forms.Padding(6);
+            this.rdbCenter.Location = new System.Drawing.Point(24, 84);
             this.rdbCenter.Name = "rdbCenter";
-            this.rdbCenter.Size = new System.Drawing.Size(92, 29);
+            this.rdbCenter.Size = new System.Drawing.Size(56, 17);
             this.rdbCenter.TabIndex = 1;
             this.rdbCenter.Text = "Center";
             this.rdbCenter.UseVisualStyleBackColor = true;
@@ -106,10 +100,9 @@ namespace OpdrachtButtons
             // rdbLinks
             // 
             this.rdbLinks.AutoSize = true;
-            this.rdbLinks.Location = new System.Drawing.Point(44, 78);
-            this.rdbLinks.Margin = new System.Windows.Forms.Padding(6);
+            this.rdbLinks.Location = new System.Drawing.Point(24, 42);
             this.rdbLinks.Name = "rdbLinks";
-            this.rdbLinks.Size = new System.Drawing.Size(79, 29);
+            this.rdbLinks.Size = new System.Drawing.Size(50, 17);
             this.rdbLinks.TabIndex = 0;
             this.rdbLinks.Text = "Links";
             this.rdbLinks.UseVisualStyleBackColor = true;
@@ -119,11 +112,9 @@ namespace OpdrachtButtons
             // 
             this.groupBox2.Controls.Add(this.chkInvoervak);
             this.groupBox2.Controls.Add(this.chkLabel);
-            this.groupBox2.Location = new System.Drawing.Point(796, 404);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(6);
+            this.groupBox2.Location = new System.Drawing.Point(434, 219);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBox2.Size = new System.Drawing.Size(367, 380);
+            this.groupBox2.Size = new System.Drawing.Size(200, 206);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Toepassen op";
@@ -132,35 +123,34 @@ namespace OpdrachtButtons
             // chkInvoervak
             // 
             this.chkInvoervak.AutoSize = true;
-            this.chkInvoervak.Location = new System.Drawing.Point(53, 227);
-            this.chkInvoervak.Margin = new System.Windows.Forms.Padding(6);
+            this.chkInvoervak.Location = new System.Drawing.Point(29, 123);
             this.chkInvoervak.Name = "chkInvoervak";
-            this.chkInvoervak.Size = new System.Drawing.Size(119, 29);
+            this.chkInvoervak.Size = new System.Drawing.Size(74, 17);
             this.chkInvoervak.TabIndex = 1;
             this.chkInvoervak.Text = "Invoervak";
             this.chkInvoervak.UseVisualStyleBackColor = true;
+            this.chkInvoervak.CheckedChanged += new System.EventHandler(this.uitlijning_ckeckedChanged);
             // 
             // chkLabel
             // 
             this.chkLabel.AutoSize = true;
-            this.chkLabel.Location = new System.Drawing.Point(53, 135);
-            this.chkLabel.Margin = new System.Windows.Forms.Padding(6);
+            this.chkLabel.Location = new System.Drawing.Point(29, 73);
             this.chkLabel.Name = "chkLabel";
-            this.chkLabel.Size = new System.Drawing.Size(82, 29);
+            this.chkLabel.Size = new System.Drawing.Size(52, 17);
             this.chkLabel.TabIndex = 0;
             this.chkLabel.Text = "Label";
             this.chkLabel.UseVisualStyleBackColor = true;
+            this.chkLabel.CheckedChanged += new System.EventHandler(this.uitlijning_ckeckedChanged);
             // 
             // frmHoofd
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1467, 831);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtTekst);
             this.Controls.Add(this.lblLabel);
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "frmHoofd";
             this.Text = "RadioButtons en CheckBoxen.";
             this.groupBox1.ResumeLayout(false);
