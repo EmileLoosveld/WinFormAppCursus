@@ -32,9 +32,9 @@ namespace OpdrachtTimerInterface
             this.components = new System.ComponentModel.Container();
             this.chkKnipper = new System.Windows.Forms.CheckBox();
             this.grpTijd = new System.Windows.Forms.GroupBox();
-            this.rdbEen = new System.Windows.Forms.RadioButton();
-            this.rdbVijf = new System.Windows.Forms.RadioButton();
             this.rdbTien = new System.Windows.Forms.RadioButton();
+            this.rdbVijf = new System.Windows.Forms.RadioButton();
+            this.rdbEen = new System.Windows.Forms.RadioButton();
             this.tmrKnipper = new System.Windows.Forms.Timer(this.components);
             this.grpTijd.SuspendLayout();
             this.SuspendLayout();
@@ -63,16 +63,16 @@ namespace OpdrachtTimerInterface
             this.grpTijd.Text = "Tijden";
             this.grpTijd.EnabledChanged += new System.EventHandler(this.rdbTien_EnabledChanged);
             // 
-            // rdbEen
+            // rdbTien
             // 
-            this.rdbEen.AutoSize = true;
-            this.rdbEen.Location = new System.Drawing.Point(13, 49);
-            this.rdbEen.Name = "rdbEen";
-            this.rdbEen.Size = new System.Drawing.Size(51, 17);
-            this.rdbEen.TabIndex = 0;
-            this.rdbEen.Text = "1 sec";
-            this.rdbEen.UseVisualStyleBackColor = true;
-            this.rdbEen.EnabledChanged += new System.EventHandler(this.rdbTien_EnabledChanged);
+            this.rdbTien.AutoSize = true;
+            this.rdbTien.Location = new System.Drawing.Point(13, 140);
+            this.rdbTien.Name = "rdbTien";
+            this.rdbTien.Size = new System.Drawing.Size(57, 17);
+            this.rdbTien.TabIndex = 2;
+            this.rdbTien.Text = "10 sec";
+            this.rdbTien.UseVisualStyleBackColor = true;
+            this.rdbTien.EnabledChanged += new System.EventHandler(this.rdbTien_EnabledChanged);
             // 
             // rdbVijf
             // 
@@ -87,20 +87,21 @@ namespace OpdrachtTimerInterface
             this.rdbVijf.UseVisualStyleBackColor = true;
             this.rdbVijf.EnabledChanged += new System.EventHandler(this.rdbTien_EnabledChanged);
             // 
-            // rdbTien
+            // rdbEen
             // 
-            this.rdbTien.AutoSize = true;
-            this.rdbTien.Location = new System.Drawing.Point(13, 140);
-            this.rdbTien.Name = "rdbTien";
-            this.rdbTien.Size = new System.Drawing.Size(57, 17);
-            this.rdbTien.TabIndex = 2;
-            this.rdbTien.Text = "10 sec";
-            this.rdbTien.UseVisualStyleBackColor = true;
-            this.rdbTien.EnabledChanged += new System.EventHandler(this.rdbTien_EnabledChanged);
+            this.rdbEen.AutoSize = true;
+            this.rdbEen.Location = new System.Drawing.Point(13, 49);
+            this.rdbEen.Name = "rdbEen";
+            this.rdbEen.Size = new System.Drawing.Size(51, 17);
+            this.rdbEen.TabIndex = 0;
+            this.rdbEen.Text = "1 sec";
+            this.rdbEen.UseVisualStyleBackColor = true;
+            this.rdbEen.EnabledChanged += new System.EventHandler(this.rdbTien_EnabledChanged);
             // 
             // tmrKnipper
             // 
             this.tmrKnipper.Interval = 5000;
+            this.tmrKnipper.Tick += new System.EventHandler(this.tmrKnipper_Tick);
             // 
             // frmHoofd
             // 
