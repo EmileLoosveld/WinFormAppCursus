@@ -21,22 +21,22 @@ namespace WinFormAppCursus
         {
             if (chkStartStop.Checked)
             {
-                tmrTekst.Start();
+                tmrTekst.Start();               //of tmrTekst.Enabled = true;
                 chkStartStop.Text = "stop";
             }
             else
             {
-                tmrTekst.Stop();
+                tmrTekst.Stop();                //of tmrTekst.Enabled = false;
                 chkStartStop.Text = "start";
                 lblText.Text = "Timer gestopt.";
             }
         }
-        bool toestand = false; //Variable om bij te houden wat vorige toestand tekst was
+        bool toestand = false;                  //Variable om bij te houden wat vorige toestand tekst was
         private void tmrTekst_Tick(object sender, EventArgs e)
         {
             if (toestand) lblText.Text = "Hallo";
             else lblText.Text = "Tot later";
-            toestand = !toestand;
+            toestand = !toestand;               //inverteren
         }
     }
 }
