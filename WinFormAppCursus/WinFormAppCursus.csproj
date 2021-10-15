@@ -94,6 +94,12 @@
     <Compile Include="frmTimer.Designer.cs">
       <DependentUpon>frmTimer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Keuzelijsten.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Keuzelijsten.Designer.cs">
+      <DependentUpon>Keuzelijsten.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="fmOpdrachtLabels.resx">
@@ -119,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTimer.resx">
       <DependentUpon>frmTimer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Keuzelijsten.resx">
+      <DependentUpon>Keuzelijsten.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

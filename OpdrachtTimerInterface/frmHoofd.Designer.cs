@@ -49,6 +49,7 @@ namespace OpdrachtTimerInterface
             this.chkKnipper.TabIndex = 0;
             this.chkKnipper.Text = "Knipper";
             this.chkKnipper.UseVisualStyleBackColor = true;
+            this.chkKnipper.CheckedChanged += new System.EventHandler(this.chkKnipper_CheckedChanged);
             // 
             // grpTijd
             // 
@@ -61,7 +62,6 @@ namespace OpdrachtTimerInterface
             this.grpTijd.TabIndex = 1;
             this.grpTijd.TabStop = false;
             this.grpTijd.Text = "Tijden";
-            this.grpTijd.EnabledChanged += new System.EventHandler(this.rdbTien_EnabledChanged);
             // 
             // rdbTien
             // 
@@ -72,7 +72,7 @@ namespace OpdrachtTimerInterface
             this.rdbTien.TabIndex = 2;
             this.rdbTien.Text = "10 sec";
             this.rdbTien.UseVisualStyleBackColor = true;
-            this.rdbTien.EnabledChanged += new System.EventHandler(this.rdbTien_EnabledChanged);
+            this.rdbTien.CheckedChanged += new System.EventHandler(this.rdbEen_CheckedChanged);
             // 
             // rdbVijf
             // 
@@ -85,7 +85,7 @@ namespace OpdrachtTimerInterface
             this.rdbVijf.TabStop = true;
             this.rdbVijf.Text = "5 sec";
             this.rdbVijf.UseVisualStyleBackColor = true;
-            this.rdbVijf.EnabledChanged += new System.EventHandler(this.rdbTien_EnabledChanged);
+            this.rdbVijf.CheckedChanged += new System.EventHandler(this.rdbEen_CheckedChanged);
             // 
             // rdbEen
             // 
@@ -96,7 +96,7 @@ namespace OpdrachtTimerInterface
             this.rdbEen.TabIndex = 0;
             this.rdbEen.Text = "1 sec";
             this.rdbEen.UseVisualStyleBackColor = true;
-            this.rdbEen.EnabledChanged += new System.EventHandler(this.rdbTien_EnabledChanged);
+            this.rdbEen.CheckedChanged += new System.EventHandler(this.rdbEen_CheckedChanged);
             // 
             // tmrKnipper
             // 
@@ -112,6 +112,7 @@ namespace OpdrachtTimerInterface
             this.Controls.Add(this.chkKnipper);
             this.Name = "frmHoofd";
             this.Text = "Timer LED | Interface";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmHoofd_FormClosing);
             this.grpTijd.ResumeLayout(false);
             this.grpTijd.PerformLayout();
             this.ResumeLayout(false);

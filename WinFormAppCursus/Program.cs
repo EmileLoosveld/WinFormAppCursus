@@ -16,7 +16,7 @@ namespace WinFormAppCursus
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmTimer());
+            Application.Run(new Keuzelijsten());
         }
     }
 }

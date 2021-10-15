@@ -33,9 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SVLIB_PIC18F24J50 v2.8.NET4x64, Version=1.0.4827.8915, Culture=neutral, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Downloads\SVLIB_PIC18F24J50 v2.8.NET4x64.dll</HintPath>
+    <Reference Include="SVLIB_PIC18F24J50 v2.8.NET4x64">
+      <HintPath>..\..\Users\V115Gebruiker11\Downloads\SVLIB_PIC18F24J50 v2.8.NET4x64.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
