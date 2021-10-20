@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KOFormulierenLabelsButtonsT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpdrachtTimerInterface", "OpdrachtTimerInterface\OpdrachtTimerInterface.csproj", "{3C2B5985-3B08-4046-8C72-2343C0BC428F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpdrachtKeuzelijsten", "OpdrachtKeuzelijsten\OpdrachtKeuzelijsten.csproj", "{FF45B745-6899-4C26-886A-0B05341A4719}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{3C2B5985-3B08-4046-8C72-2343C0BC428F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C2B5985-3B08-4046-8C72-2343C0BC428F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C2B5985-3B08-4046-8C72-2343C0BC428F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF45B745-6899-4C26-886A-0B05341A4719}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF45B745-6899-4C26-886A-0B05341A4719}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF45B745-6899-4C26-886A-0B05341A4719}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF45B745-6899-4C26-886A-0B05341A4719}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
