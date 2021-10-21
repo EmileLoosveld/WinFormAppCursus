@@ -26,13 +26,14 @@ namespace OpdrachtKeuzelijsten
 
         private void btnSortZA_Click(object sender, EventArgs e)
         {
+            int tellingOnder = lstItems.Items.Count - 1;
             lstItems.Sorted = true;
             lstItems.Sorted = false;
-            int hoeveelheid = lstItems.Items.Count;
-            for (int i = -1; i == lstItems.Items.Count / 2; i++)
+            for (int i = 0; i != lstItems.Items.Count / 2; i ++)
             {
-                hoeveelheid--;
-                lstItems.Items[i] = lstItems.Items[hoeveelheid];
+                string oud = lstItems.Items[i].ToString();
+                lstItems.Items[i] = lstItems.Items[tellingOnder];
+                lstItems.Items[tellingOnder] = oud;
             }
         }
     }
