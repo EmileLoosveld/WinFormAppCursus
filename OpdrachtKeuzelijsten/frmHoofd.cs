@@ -34,6 +34,31 @@ namespace OpdrachtKeuzelijsten
                 string oud = lstItems.Items[i].ToString();
                 lstItems.Items[i] = lstItems.Items[tellingOnder];
                 lstItems.Items[tellingOnder] = oud;
+                tellingOnder--;
+            }
+        }
+
+        private void btnWis_Click(object sender, EventArgs e)
+        {
+            int count = lstItems.SelectedItems.Count;
+            if (count > 0) 
+            {
+                for (int i = 0; i < count; i++) 
+                {
+                    object hulp = lstItems.SelectedItems[0];
+                    lstItems.Items.Remove(hulp);
+                }
+            }
+        }
+
+        private void btnToevoegen_Click(object sender, EventArgs e)
+        {
+            bool contains = lstItems.Items.Contains(txtItem.Text);
+
+            if (contains == false && txtItem.Text != "")
+            {
+                if (chkSelect.Checked && lstItems.SelectedIndex != -1) lstItems.Items.Insert(lstItems.SelectedIndex, txtItem.Text);
+                else lstItems.Items.Add(txtItem.Text);
             }
         }
     }
