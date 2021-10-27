@@ -19,7 +19,11 @@ namespace WinFormAppCursus
         private frmOptiesDialog frmOptions = new frmOptiesDialog();
         private void btnOpties_Click(object sender, EventArgs e)
         {
-            frmOptions.ShowDialog();
+            if (frmOptions.ShowDialog() == DialogResult.OK)
+            {
+                lblTekst.BackColor = frmOptions.AchtergrondKleur;
+                lblTekst.ForeColor = frmOptions.VoorgrondKleur;
+            }
         }
     }
 }

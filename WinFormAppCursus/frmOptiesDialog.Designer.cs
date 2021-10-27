@@ -30,13 +30,13 @@ namespace WinFormAppCursus
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rdbVoorZwart = new System.Windows.Forms.RadioButton();
-            this.rdbVoorWit = new System.Windows.Forms.RadioButton();
             this.rdbVoorRood = new System.Windows.Forms.RadioButton();
-            this.rdbAchterStandaard = new System.Windows.Forms.RadioButton();
-            this.rdbAchterWit = new System.Windows.Forms.RadioButton();
+            this.rdbVoorWit = new System.Windows.Forms.RadioButton();
+            this.rdbVoorZwart = new System.Windows.Forms.RadioButton();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rdbAchterZwart = new System.Windows.Forms.RadioButton();
+            this.rdbAchterWit = new System.Windows.Forms.RadioButton();
+            this.rdbAchterStandaard = new System.Windows.Forms.RadioButton();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -55,17 +55,25 @@ namespace WinFormAppCursus
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Voorgrondkleur";
             // 
-            // groupBox2
+            // rdbVoorRood
             // 
-            this.groupBox2.Controls.Add(this.rdbAchterZwart);
-            this.groupBox2.Controls.Add(this.rdbAchterWit);
-            this.groupBox2.Controls.Add(this.rdbAchterStandaard);
-            this.groupBox2.Location = new System.Drawing.Point(284, 104);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(149, 229);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Achtergrondkleur";
+            this.rdbVoorRood.AutoSize = true;
+            this.rdbVoorRood.Location = new System.Drawing.Point(23, 174);
+            this.rdbVoorRood.Name = "rdbVoorRood";
+            this.rdbVoorRood.Size = new System.Drawing.Size(51, 17);
+            this.rdbVoorRood.TabIndex = 2;
+            this.rdbVoorRood.Text = "Rood";
+            this.rdbVoorRood.UseVisualStyleBackColor = true;
+            // 
+            // rdbVoorWit
+            // 
+            this.rdbVoorWit.AutoSize = true;
+            this.rdbVoorWit.Location = new System.Drawing.Point(23, 110);
+            this.rdbVoorWit.Name = "rdbVoorWit";
+            this.rdbVoorWit.Size = new System.Drawing.Size(41, 17);
+            this.rdbVoorWit.TabIndex = 1;
+            this.rdbVoorWit.Text = "Wit";
+            this.rdbVoorWit.UseVisualStyleBackColor = true;
             // 
             // rdbVoorZwart
             // 
@@ -79,25 +87,37 @@ namespace WinFormAppCursus
             this.rdbVoorZwart.Text = "Zwart";
             this.rdbVoorZwart.UseVisualStyleBackColor = true;
             // 
-            // rdbVoorWit
+            // groupBox2
             // 
-            this.rdbVoorWit.AutoSize = true;
-            this.rdbVoorWit.Location = new System.Drawing.Point(23, 110);
-            this.rdbVoorWit.Name = "rdbVoorWit";
-            this.rdbVoorWit.Size = new System.Drawing.Size(41, 17);
-            this.rdbVoorWit.TabIndex = 1;
-            this.rdbVoorWit.Text = "Wit";
-            this.rdbVoorWit.UseVisualStyleBackColor = true;
+            this.groupBox2.Controls.Add(this.rdbAchterZwart);
+            this.groupBox2.Controls.Add(this.rdbAchterWit);
+            this.groupBox2.Controls.Add(this.rdbAchterStandaard);
+            this.groupBox2.Location = new System.Drawing.Point(284, 104);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(149, 229);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Achtergrondkleur";
             // 
-            // rdbVoorRood
+            // rdbAchterZwart
             // 
-            this.rdbVoorRood.AutoSize = true;
-            this.rdbVoorRood.Location = new System.Drawing.Point(23, 174);
-            this.rdbVoorRood.Name = "rdbVoorRood";
-            this.rdbVoorRood.Size = new System.Drawing.Size(51, 17);
-            this.rdbVoorRood.TabIndex = 2;
-            this.rdbVoorRood.Text = "Rood";
-            this.rdbVoorRood.UseVisualStyleBackColor = true;
+            this.rdbAchterZwart.AutoSize = true;
+            this.rdbAchterZwart.Location = new System.Drawing.Point(24, 174);
+            this.rdbAchterZwart.Name = "rdbAchterZwart";
+            this.rdbAchterZwart.Size = new System.Drawing.Size(52, 17);
+            this.rdbAchterZwart.TabIndex = 2;
+            this.rdbAchterZwart.Text = "Zwart";
+            this.rdbAchterZwart.UseVisualStyleBackColor = true;
+            // 
+            // rdbAchterWit
+            // 
+            this.rdbAchterWit.AutoSize = true;
+            this.rdbAchterWit.Location = new System.Drawing.Point(24, 110);
+            this.rdbAchterWit.Name = "rdbAchterWit";
+            this.rdbAchterWit.Size = new System.Drawing.Size(41, 17);
+            this.rdbAchterWit.TabIndex = 1;
+            this.rdbAchterWit.Text = "Wit";
+            this.rdbAchterWit.UseVisualStyleBackColor = true;
             // 
             // rdbAchterStandaard
             // 
@@ -111,34 +131,16 @@ namespace WinFormAppCursus
             this.rdbAchterStandaard.Text = "Standaard";
             this.rdbAchterStandaard.UseVisualStyleBackColor = true;
             // 
-            // rdbAchterWit
-            // 
-            this.rdbAchterWit.AutoSize = true;
-            this.rdbAchterWit.Location = new System.Drawing.Point(24, 110);
-            this.rdbAchterWit.Name = "rdbAchterWit";
-            this.rdbAchterWit.Size = new System.Drawing.Size(41, 17);
-            this.rdbAchterWit.TabIndex = 1;
-            this.rdbAchterWit.Text = "Wit";
-            this.rdbAchterWit.UseVisualStyleBackColor = true;
-            // 
-            // rdbAchterZwart
-            // 
-            this.rdbAchterZwart.AutoSize = true;
-            this.rdbAchterZwart.Location = new System.Drawing.Point(24, 174);
-            this.rdbAchterZwart.Name = "rdbAchterZwart";
-            this.rdbAchterZwart.Size = new System.Drawing.Size(52, 17);
-            this.rdbAchterZwart.TabIndex = 2;
-            this.rdbAchterZwart.Text = "Zwart";
-            this.rdbAchterZwart.UseVisualStyleBackColor = true;
-            // 
             // btnOK
             // 
+            this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.Location = new System.Drawing.Point(308, 348);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(125, 34);
             this.btnOK.TabIndex = 2;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
@@ -165,6 +167,7 @@ namespace WinFormAppCursus
             this.Name = "frmOptiesDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmOptiesDialog";
+            this.Shown += new System.EventHandler(this.frmOptiesDialog_Shown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
