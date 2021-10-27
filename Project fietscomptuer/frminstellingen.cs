@@ -46,6 +46,11 @@ namespace Project_fietscomptuer
             }
         }
 
+        private void btnTestRennerRit_Click(object sender, EventArgs e)
+        {
+            tmrSimuleerRit.Start();
+        }
+
         private void num_ValueChanged(object sender, EventArgs e)
         {
             if (sender == numAfstand)
@@ -109,6 +114,7 @@ namespace Project_fietscomptuer
                 picFiets.Top = lblFinish.Top;
                 //af te leggen afstand terug op 0 om volgende keer terug te kunnen starten
                 ritAfgelegdeAfstand = 0;
+                tmrSimuleerRit.Stop();
             }
         }
 

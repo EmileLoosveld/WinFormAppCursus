@@ -31,6 +31,7 @@ namespace WinFormAppCursus
         {
             this.lblTekst = new System.Windows.Forms.Label();
             this.btnOpties = new System.Windows.Forms.Button();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.SuspendLayout();
             // 
             // lblTekst
@@ -70,5 +71,6 @@ namespace WinFormAppCursus
 
         private System.Windows.Forms.Label lblTekst;
         private System.Windows.Forms.Button btnOpties;
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }

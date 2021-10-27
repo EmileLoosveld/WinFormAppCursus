@@ -29,6 +29,7 @@ namespace Project_fietscomptuer
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlInfo = new System.Windows.Forms.Panel();
             this.numWielLengte = new System.Windows.Forms.NumericUpDown();
             this.numAfstand = new System.Windows.Forms.NumericUpDown();
@@ -44,6 +45,8 @@ namespace Project_fietscomptuer
             this.lblFinish = new System.Windows.Forms.Label();
             this.lblStart = new System.Windows.Forms.Label();
             this.picKaart = new System.Windows.Forms.PictureBox();
+            this.tmrSimuleerRit = new System.Windows.Forms.Timer(this.components);
+            this.btnTestRennerRit = new System.Windows.Forms.Button();
             this.pnlInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numWielLengte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAfstand)).BeginInit();
@@ -55,6 +58,7 @@ namespace Project_fietscomptuer
             // 
             // pnlInfo
             // 
+            this.pnlInfo.Controls.Add(this.btnTestRennerRit);
             this.pnlInfo.Controls.Add(this.numWielLengte);
             this.pnlInfo.Controls.Add(this.numAfstand);
             this.pnlInfo.Controls.Add(this.btnTestRenner);
@@ -77,7 +81,7 @@ namespace Project_fietscomptuer
             0,
             196608});
             this.numWielLengte.Location = new System.Drawing.Point(506, 57);
-            this.numWielLengte.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numWielLengte.Margin = new System.Windows.Forms.Padding(2);
             this.numWielLengte.Maximum = new decimal(new int[] {
             10,
             0,
@@ -105,7 +109,7 @@ namespace Project_fietscomptuer
             0,
             65536});
             this.numAfstand.Location = new System.Drawing.Point(170, 57);
-            this.numAfstand.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numAfstand.Margin = new System.Windows.Forms.Padding(2);
             this.numAfstand.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -126,12 +130,12 @@ namespace Project_fietscomptuer
             // 
             // btnTestRenner
             // 
-            this.btnTestRenner.Location = new System.Drawing.Point(631, 57);
-            this.btnTestRenner.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTestRenner.Location = new System.Drawing.Point(633, 36);
+            this.btnTestRenner.Margin = new System.Windows.Forms.Padding(2);
             this.btnTestRenner.Name = "btnTestRenner";
-            this.btnTestRenner.Size = new System.Drawing.Size(98, 54);
+            this.btnTestRenner.Size = new System.Drawing.Size(142, 36);
             this.btnTestRenner.TabIndex = 4;
-            this.btnTestRenner.Text = "Test Renner met Fietswiel";
+            this.btnTestRenner.Text = "Test Renner met Fietswiel STAP VOOR STAP";
             this.btnTestRenner.UseVisualStyleBackColor = true;
             this.btnTestRenner.Click += new System.EventHandler(this.btnTestRenner_Click);
             // 
@@ -254,6 +258,21 @@ namespace Project_fietscomptuer
             this.picKaart.TabIndex = 0;
             this.picKaart.TabStop = false;
             // 
+            // tmrSimuleerRit
+            // 
+            this.tmrSimuleerRit.Interval = 500;
+            this.tmrSimuleerRit.Tick += new System.EventHandler(this.btnTestRenner_Click);
+            // 
+            // btnTestRennerRit
+            // 
+            this.btnTestRennerRit.Location = new System.Drawing.Point(633, 78);
+            this.btnTestRennerRit.Name = "btnTestRennerRit";
+            this.btnTestRennerRit.Size = new System.Drawing.Size(142, 36);
+            this.btnTestRennerRit.TabIndex = 7;
+            this.btnTestRennerRit.Text = "Test Renner met Fietswiel VOLLEDIG";
+            this.btnTestRennerRit.UseVisualStyleBackColor = true;
+            this.btnTestRennerRit.Click += new System.EventHandler(this.btnTestRennerRit_Click);
+            // 
             // frminstellingen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,5 +317,7 @@ namespace Project_fietscomptuer
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnTestRennerRit;
+        private System.Windows.Forms.Timer tmrSimuleerRit;
     }
 }
