@@ -59,6 +59,7 @@ namespace OpdrachtKeuzelijsten
             this.txtItem.Name = "txtItem";
             this.txtItem.Size = new System.Drawing.Size(144, 20);
             this.txtItem.TabIndex = 1;
+            this.txtItem.TextChanged += new System.EventHandler(this.txtItem_TextChanged);
             // 
             // btnSortAZ
             // 

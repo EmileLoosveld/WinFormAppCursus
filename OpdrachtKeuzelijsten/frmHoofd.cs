@@ -61,5 +61,10 @@ namespace OpdrachtKeuzelijsten
                 else lstItems.Items.Add(txtItem.Text);
             }
         }
+
+        private void txtItem_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
