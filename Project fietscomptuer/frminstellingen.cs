@@ -14,9 +14,12 @@ namespace Project_fietscomptuer
     {
         float ritAfstand = 10000, wiellengte = (float)2.175;
         float beweegLeft = 0, beweegTop = 0, ritAfgelegdeAfstand = 0;
+        string test = "testje";
         public frminstellingen()
         {
             InitializeComponent();
+            Gegevens gegevens = new Gegevens();
+            Gegevens.BestandOpslaan(test);
         }
 
         private void frminstellingen_Load(object sender, EventArgs e)
