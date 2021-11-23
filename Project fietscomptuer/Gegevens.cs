@@ -9,12 +9,27 @@ namespace Project_fietscomptuer
 {
     class Gegevens
     {
-        public static void BestandOpslaan(string bestand)// List gegevens)
+        public static void BestandOpslaan(string bestand, List<string> gegevens)
         {
-            //StreamWriter streamWriter = File.CreateText(@"\WinFormAppCursus");
-            //StreamWriter bestandSchrijven = new StreamWriter();
-            //File.Create(@"\WinFormAppCursus");
-            
+            bool bestaatBestand = Directory.Exists(bestand);
+            string bestandPath = bestand.Remove(bestand.Length - 10, 10);
+            if (bestaatBestand == false) Directory.CreateDirectory(bestandPath);
+            StreamWriter bestandSchrijven = new StreamWriter(bestand);
+            bestandSchrijven.WriteLine(gegevens[0]);
+            bestandSchrijven.WriteLine(gegevens[1]);
+            bestandSchrijven.WriteLine(gegevens[2]);
+            bestandSchrijven.WriteLine(gegevens[3]);
+            bestandSchrijven.Close();
+        }
+        public static void BestandInlezen(string bestand, List<string> gegevens)
+        {
+            StreamReader bestandLezen = new StreamReader(bestand);
+            do
+            {
+                gegevens.Add(bestandLezen.ReadLine());
+            }
+            while (!bestandLezen.EndOfStream);
+            bestandLezen.Close();
         }
     }
 }

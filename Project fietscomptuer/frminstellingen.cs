@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,12 +16,24 @@ namespace Project_fietscomptuer
     {
         float ritAfstand = 10000, wiellengte = (float)2.175;
         float beweegLeft = 0, beweegTop = 0, ritAfgelegdeAfstand = 0;
-        string test = "testje";
+        List<string> alleGegevens = new List<string>();
         public frminstellingen()
         {
             InitializeComponent();
-            Gegevens gegevens = new Gegevens();
-            Gegevens.BestandOpslaan(test);
+
+            string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\bin\Debug\instellingen\coord.vti";
+            if (File.Exists(projectDirectory) == true)
+            {
+                Gegevens.BestandInlezen(projectDirectory, alleGegevens);
+                string[] coordsStart = alleGegevens[0].Split(';');
+                string[] coordsFinish = alleGegevens[1].Split(';');
+                lblStart.Left = int.Parse(coordsStart[0]);
+                lblStart.Top = int.Parse(coordsStart[1]);
+                lblFinish.Left = int.Parse(coordsFinish[0]);
+                lblFinish.Top = int.Parse(coordsFinish[1]);
+                numAfstand.Value = decimal.Parse(alleGegevens[2]) / 1000;
+                numWielLengte.Value = decimal.Parse(alleGegevens[3]);
+            }
         }
 
         private void frminstellingen_Load(object sender, EventArgs e)
@@ -52,6 +66,36 @@ namespace Project_fietscomptuer
         private void btnTestRennerRit_Click(object sender, EventArgs e)
         {
             tmrSimuleerRit.Start();
+        }
+
+        private void btnSlaOp_Click(object sender, EventArgs e)
+        {
+            string exeLocation = System.Reflection.Assembly.GetEntryAssembly().Location;
+            string exePath = System.IO.Path.GetDirectoryName(exeLocation);
+            string[] paths = { exePath, "instellingen", "coord.vti"};
+            string fullPath = Path.Combine(paths);
+            alleGegevens.Clear();
+            alleGegevens.Add(lblStart.Left.ToString() + " ; " + lblStart.Top.ToString());
+            alleGegevens.Add(lblFinish.Left.ToString() + " ; " + lblFinish.Top.ToString());
+            alleGegevens.Add(ritAfstand.ToString());
+            alleGegevens.Add(wiellengte.ToString());
+            Gegevens.BestandOpslaan(fullPath, alleGegevens);
+        }
+
+        private void picKaart_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                openFileDialog1.Filter = "Image Files(*.jpg; *.jpeg; *.png)|*.jpg; *.jpeg; *.png";
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    picKaart.Image = new Bitmap(openFileDialog1.FileName);
+                    Bitmap KaartCopie = new Bitmap(picKaart.Image);
+                    KaartCopie.Save(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\bin\Debug\instellingen", ImageFormat.Png);
+                    //string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
+                }
+
+            }
         }
 
         private void num_ValueChanged(object sender, EventArgs e)
