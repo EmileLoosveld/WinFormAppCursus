@@ -112,6 +112,11 @@ namespace Project_fietscomptuer
             0,
             0,
             0});
+            this.numWielLengte.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            196608});
             this.numWielLengte.Name = "numWielLengte";
             this.numWielLengte.Size = new System.Drawing.Size(95, 29);
             this.numWielLengte.TabIndex = 6;
@@ -140,6 +145,11 @@ namespace Project_fietscomptuer
             0,
             0,
             0});
+            this.numAfstand.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.numAfstand.Name = "numAfstand";
             this.numAfstand.Size = new System.Drawing.Size(95, 29);
             this.numAfstand.TabIndex = 5;

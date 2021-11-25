@@ -21,7 +21,12 @@ namespace Project_fietscomptuer
         {
             InitializeComponent();
 
-            string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\bin\Debug\instellingen\coord.vti";
+            string exeLocation = System.Reflection.Assembly.GetEntryAssembly().Location;
+            string exePath = System.IO.Path.GetDirectoryName(exeLocation);
+            string[] paths = { exePath, "instellingen", "coord.vti" };
+            string projectDirectory = Path.Combine(paths);
+            string[] pathsFoto = { exePath, "instellingen", "kaart.png" };
+            string KaartDirectory = Path.Combine(pathsFoto);
             if (File.Exists(projectDirectory) == true)
             {
                 Gegevens.BestandInlezen(projectDirectory, alleGegevens);
@@ -33,6 +38,10 @@ namespace Project_fietscomptuer
                 lblFinish.Top = int.Parse(coordsFinish[1]);
                 numAfstand.Value = decimal.Parse(alleGegevens[2]) / 1000;
                 numWielLengte.Value = decimal.Parse(alleGegevens[3]);
+            }
+            if (File.Exists(KaartDirectory) == true)
+            {
+                picKaart.Image = Image.FromFile(KaartDirectory);
             }
         }
 
@@ -84,15 +93,18 @@ namespace Project_fietscomptuer
 
         private void picKaart_MouseClick(object sender, MouseEventArgs e)
         {
+            string exeLocation = System.Reflection.Assembly.GetEntryAssembly().Location;
+            string exePath = System.IO.Path.GetDirectoryName(exeLocation);
+            string[] paths = { exePath, "instellingen", "kaart.png" };
+            string afbeeldingLocatie = Path.Combine(paths);
             if (e.Button == MouseButtons.Right)
             {
                 openFileDialog1.Filter = "Image Files(*.jpg; *.jpeg; *.png)|*.jpg; *.jpeg; *.png";
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
+                    picKaart.Image.Dispose();
                     picKaart.Image = new Bitmap(openFileDialog1.FileName);
-                    Bitmap KaartCopie = new Bitmap(picKaart.Image);
-                    KaartCopie.Save(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\bin\Debug\instellingen", ImageFormat.Png);
-                    //string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
+                    picKaart.Image.Save(afbeeldingLocatie, System.Drawing.Imaging.ImageFormat.Png);
                 }
 
             }
