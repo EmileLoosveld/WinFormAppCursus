@@ -52,6 +52,13 @@ namespace Project_fietscomptuer
             picFiets.Parent = picKaart;
             lblFinish.Parent = picKaart;
             lblStart.Parent = picKaart;
+
+            //Serial ports zoeken en plaatsen in de list
+            lstPoort.Items.Clear();
+            //alle seriële poorten voor dit toestel opvragen
+            string[] ports = System.IO.Ports.SerialPort.GetPortNames();
+            foreach (string poort in ports)
+                lstPoort.Items.Add(poort);
         }
 
         private void Num_Increment(object sender, KeyEventArgs e)
