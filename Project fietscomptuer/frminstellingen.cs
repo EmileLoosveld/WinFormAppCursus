@@ -16,6 +16,7 @@ namespace Project_fietscomptuer
     {
         float ritAfstand = 10000, wiellengte = (float)2.175;
         float beweegLeft = 0, beweegTop = 0, ritAfgelegdeAfstand = 0;
+        short TestToeren = 0;
         List<string> alleGegevens = new List<string>();
         public frminstellingen()
         {
@@ -115,6 +116,53 @@ namespace Project_fietscomptuer
                 }
 
             }
+        }
+
+        private void lstPoort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstPoort.SelectedIndex == -1) return;
+            string poort = lstPoort.SelectedItem.ToString();
+            if (poort == serial.PortName) return;
+            serial.Close();
+            try
+            {
+                serial.PortName = poort;
+                serial.Open();
+                if (serial.IsOpen == true)
+                {
+                    this.Text = "connectie gemaakt met poort: " + poort;
+                }
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void serial_PinChanged(object sender, System.IO.Ports.SerialPinChangedEventArgs e)
+        {
+            try
+            {
+                if (e.EventType == System.IO.Ports.SerialPinChange.DsrChanged  && serial.DsrHolding   == true)
+                {
+                    TestToeren++;
+                    this.Invoke(new MethodInvoker(delegate ()
+                {
+                    lblWiel.Text = "Wiel: " + TestToeren + " Toeren";
+                }));
+                }
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            lblAfstandRoute.Text = "0 km";
+            picFiets.Left = lblStart.Left;
+            picFiets.Top = lblStart.Top;
         }
 
         private void num_ValueChanged(object sender, EventArgs e)
