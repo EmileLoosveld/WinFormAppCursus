@@ -15,8 +15,8 @@ namespace Project_fietscomptuer
     public partial class frminstellingen : Form
     {
         float ritAfstand = 10000, wiellengte = (float)2.175;
-        float beweegLeft = 0, beweegTop = 0, ritAfgelegdeAfstand = 0;
-        short TestToeren = 0;
+        float beweegLeft = 0, beweegTop = 0, ritAfgelegdeAfstand = 0, tellerAfgelegdeafstand = 0;
+        short TestToeren = 0, af = 0;
         List<string> alleGegevens = new List<string>();
         public frminstellingen()
         {
@@ -53,6 +53,10 @@ namespace Project_fietscomptuer
             picFiets.Parent = picKaart;
             lblFinish.Parent = picKaart;
             lblStart.Parent = picKaart;
+
+            ritAfstand = (float)numAfstand.Value * 1000;
+            wiellengte = (float)numWielLengte.Value;
+            ritAfgelegdeAfstand = 0;
 
             //Serial ports zoeken en plaatsen in de list
             lstPoort.Items.Clear();
@@ -149,6 +153,8 @@ namespace Project_fietscomptuer
                     this.Invoke(new MethodInvoker(delegate ()
                 {
                     lblWiel.Text = "Wiel: " + TestToeren + " Toeren";
+                    btnTestRenner_Click(sender, e);
+                    lblAfstandRoute.Text = (tellerAfgelegdeafstand / 1000).ToString() + " km";
                 }));
                 }
             }
@@ -163,6 +169,8 @@ namespace Project_fietscomptuer
             lblAfstandRoute.Text = "0 km";
             picFiets.Left = lblStart.Left;
             picFiets.Top = lblStart.Top;
+            ritAfgelegdeAfstand = 0;
+            tellerAfgelegdeafstand = 0;
         }
 
         private void num_ValueChanged(object sender, EventArgs e)
@@ -176,8 +184,8 @@ namespace Project_fietscomptuer
                 wiellengte = (float)numWielLengte.Value;
             }
             ritAfgelegdeAfstand = 0;
+            tellerAfgelegdeafstand = 0;
         }
-
         private void btnTestRenner_Click(object sender, EventArgs e)
         {
             //Fietser in de juiste richting laten kijken afhangelijk van zijn x-positie (=left)
@@ -189,6 +197,7 @@ namespace Project_fietscomptuer
             {
                 picFiets.Image = Properties.Resources.rennerR;
             }
+
             //fietster alleen bewegen als geheel getal bereikt werd
             //horizontale beweging
             //Zorgen dat je komma-getal bijhoudt
@@ -208,18 +217,22 @@ namespace Project_fietscomptuer
             {
                 beweegTop -= (int)beweegTop;
             }
+
             //kijken als finish reeds bereikt werd
             if (ritAfgelegdeAfstand == 0)
             {
                 picFiets.Left = lblStart.Left;
                 picFiets.Top = lblStart.Top;
                 beweegTop = 0; beweegLeft = 0;
+                tellerAfgelegdeafstand = 0;
             }
-            //afstand aanpassen
             if (ritAfgelegdeAfstand < ritAfstand)
             {
                 //fietstersafstand bijhouden zodat je weet als hoe ver hij zit
                 ritAfgelegdeAfstand += wiellengte;
+                tellerAfgelegdeafstand += wiellengte;
+                af++;
+                if (af == 1) tellerAfgelegdeafstand -= wiellengte;
             }
             else
             {
@@ -228,6 +241,7 @@ namespace Project_fietscomptuer
                 picFiets.Top = lblFinish.Top;
                 //af te leggen afstand terug op 0 om volgende keer terug te kunnen starten
                 ritAfgelegdeAfstand = 0;
+                tellerAfgelegdeafstand = 0;
                 tmrSimuleerRit.Stop();
             }
         }
@@ -240,12 +254,14 @@ namespace Project_fietscomptuer
                 lblStart.Top = point.Y - Cursor.Size.Height / 2;
                 lblStart.Left = point.X - Cursor.Size.Width / 2;
                 ritAfgelegdeAfstand = 0;
+                tellerAfgelegdeafstand = 0;
             }
             if (e.Button == MouseButtons.Left && point != lblFinish.Location && sender == lblFinish)
             {
                 lblFinish.Top = point.Y - Cursor.Size.Height / 2;
                 lblFinish.Left = point.X - Cursor.Size.Width / 2;
                 ritAfgelegdeAfstand = 0;
+                tellerAfgelegdeafstand = 0;
             }
         }
     }    
