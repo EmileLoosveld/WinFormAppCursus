@@ -31,6 +31,7 @@ namespace Project_fietscomptuer
         {
             this.components = new System.ComponentModel.Container();
             this.pnlInfo = new System.Windows.Forms.Panel();
+            this.btnStart = new System.Windows.Forms.Button();
             this.btnSlaOp = new System.Windows.Forms.Button();
             this.btnTestRennerRit = new System.Windows.Forms.Button();
             this.numWielLengte = new System.Windows.Forms.NumericUpDown();
@@ -42,6 +43,7 @@ namespace Project_fietscomptuer
             this.label1 = new System.Windows.Forms.Label();
             this.pnlInstellingen = new System.Windows.Forms.Panel();
             this.pnlPoort = new System.Windows.Forms.Panel();
+            this.lblAfstandRoute = new System.Windows.Forms.Label();
             this.lblWiel = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lstPoort = new System.Windows.Forms.ListBox();
@@ -54,8 +56,6 @@ namespace Project_fietscomptuer
             this.tmrSimuleerRit = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.serial = new System.IO.Ports.SerialPort(this.components);
-            this.btnStart = new System.Windows.Forms.Button();
-            this.lblAfstandRoute = new System.Windows.Forms.Label();
             this.pnlInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numWielLengte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAfstand)).BeginInit();
@@ -81,8 +81,18 @@ namespace Project_fietscomptuer
             this.pnlInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlInfo.Location = new System.Drawing.Point(0, 0);
             this.pnlInfo.Name = "pnlInfo";
-            this.pnlInfo.Size = new System.Drawing.Size(1049, 142);
+            this.pnlInfo.Size = new System.Drawing.Size(1056, 142);
             this.pnlInfo.TabIndex = 0;
+            // 
+            // btnStart
+            // 
+            this.btnStart.Location = new System.Drawing.Point(856, 36);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(72, 78);
+            this.btnStart.TabIndex = 9;
+            this.btnStart.Text = "Start";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // btnSlaOp
             // 
@@ -229,7 +239,7 @@ namespace Project_fietscomptuer
             this.pnlInstellingen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlInstellingen.Location = new System.Drawing.Point(0, 142);
             this.pnlInstellingen.Name = "pnlInstellingen";
-            this.pnlInstellingen.Size = new System.Drawing.Size(1049, 433);
+            this.pnlInstellingen.Size = new System.Drawing.Size(1056, 449);
             this.pnlInstellingen.TabIndex = 2;
             // 
             // pnlPoort
@@ -243,15 +253,27 @@ namespace Project_fietscomptuer
             this.pnlPoort.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlPoort.Location = new System.Drawing.Point(603, 0);
             this.pnlPoort.Name = "pnlPoort";
-            this.pnlPoort.Size = new System.Drawing.Size(446, 433);
+            this.pnlPoort.Size = new System.Drawing.Size(453, 449);
             this.pnlPoort.TabIndex = 1;
+            // 
+            // lblAfstandRoute
+            // 
+            this.lblAfstandRoute.BackColor = System.Drawing.SystemColors.Info;
+            this.lblAfstandRoute.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblAfstandRoute.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAfstandRoute.Location = new System.Drawing.Point(0, 216);
+            this.lblAfstandRoute.Name = "lblAfstandRoute";
+            this.lblAfstandRoute.Size = new System.Drawing.Size(453, 183);
+            this.lblAfstandRoute.TabIndex = 4;
+            this.lblAfstandRoute.Text = "0 km";
+            this.lblAfstandRoute.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblWiel
             // 
             this.lblWiel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblWiel.Location = new System.Drawing.Point(0, 383);
+            this.lblWiel.Location = new System.Drawing.Point(0, 399);
             this.lblWiel.Name = "lblWiel";
-            this.lblWiel.Size = new System.Drawing.Size(446, 27);
+            this.lblWiel.Size = new System.Drawing.Size(453, 27);
             this.lblWiel.TabIndex = 3;
             this.lblWiel.Text = "Wiel: 0 Toeren";
             this.lblWiel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -259,9 +281,9 @@ namespace Project_fietscomptuer
             // label6
             // 
             this.label6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label6.Location = new System.Drawing.Point(0, 410);
+            this.label6.Location = new System.Drawing.Point(0, 426);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(446, 23);
+            this.label6.Size = new System.Drawing.Size(453, 23);
             this.label6.TabIndex = 2;
             this.label6.Text = "Draai aan je wiel en test de geselecteerde poort.";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -272,7 +294,7 @@ namespace Project_fietscomptuer
             this.lstPoort.FormattingEnabled = true;
             this.lstPoort.Location = new System.Drawing.Point(0, 30);
             this.lstPoort.Name = "lstPoort";
-            this.lstPoort.Size = new System.Drawing.Size(446, 186);
+            this.lstPoort.Size = new System.Drawing.Size(453, 186);
             this.lstPoort.TabIndex = 1;
             this.lstPoort.SelectedIndexChanged += new System.EventHandler(this.lstPoort_SelectedIndexChanged);
             // 
@@ -282,7 +304,7 @@ namespace Project_fietscomptuer
             this.label5.Dock = System.Windows.Forms.DockStyle.Top;
             this.label5.Location = new System.Drawing.Point(0, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(446, 30);
+            this.label5.Size = new System.Drawing.Size(453, 30);
             this.label5.TabIndex = 0;
             this.label5.Text = "Selecteer eerst een seriële poort en sluit dan pas het fietsmeettoestel aan.";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -296,7 +318,7 @@ namespace Project_fietscomptuer
             this.pnlKaart.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlKaart.Location = new System.Drawing.Point(0, 0);
             this.pnlKaart.Name = "pnlKaart";
-            this.pnlKaart.Size = new System.Drawing.Size(603, 433);
+            this.pnlKaart.Size = new System.Drawing.Size(603, 449);
             this.pnlKaart.TabIndex = 0;
             // 
             // picFiets
@@ -342,7 +364,7 @@ namespace Project_fietscomptuer
             this.picKaart.Image = global::Project_fietscomptuer.Properties.Resources.defaultkaart;
             this.picKaart.Location = new System.Drawing.Point(0, 0);
             this.picKaart.Name = "picKaart";
-            this.picKaart.Size = new System.Drawing.Size(603, 433);
+            this.picKaart.Size = new System.Drawing.Size(603, 449);
             this.picKaart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picKaart.TabIndex = 0;
             this.picKaart.TabStop = false;
@@ -363,34 +385,12 @@ namespace Project_fietscomptuer
             this.serial.PortName = "COM20";
             this.serial.PinChanged += new System.IO.Ports.SerialPinChangedEventHandler(this.serial_PinChanged);
             // 
-            // btnStart
-            // 
-            this.btnStart.Location = new System.Drawing.Point(856, 36);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(72, 78);
-            this.btnStart.TabIndex = 9;
-            this.btnStart.Text = "Start";
-            this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
-            // 
-            // lblAfstandRoute
-            // 
-            this.lblAfstandRoute.BackColor = System.Drawing.SystemColors.Info;
-            this.lblAfstandRoute.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblAfstandRoute.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAfstandRoute.Location = new System.Drawing.Point(0, 216);
-            this.lblAfstandRoute.Name = "lblAfstandRoute";
-            this.lblAfstandRoute.Size = new System.Drawing.Size(446, 167);
-            this.lblAfstandRoute.TabIndex = 4;
-            this.lblAfstandRoute.Text = "0 km";
-            this.lblAfstandRoute.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // frminstellingen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1049, 575);
+            this.ClientSize = new System.Drawing.Size(1056, 591);
             this.Controls.Add(this.pnlInstellingen);
             this.Controls.Add(this.pnlInfo);
             this.MaximizeBox = false;

@@ -15,8 +15,9 @@ namespace Project_fietscomptuer
     public partial class frminstellingen : Form
     {
         float ritAfstand = 10000, wiellengte = (float)2.175;
-        float beweegLeft = 0, beweegTop = 0, ritAfgelegdeAfstand = 0, tellerAfgelegdeafstand = 0;
-        short TestToeren = 0, af = 0;
+        float beweegLeft = 0, beweegTop = 0, ritAfgelegdeAfstand = 0, ritAfgelegdeAfstandLabel = 0;
+        short TestToeren = 0;
+        bool serieelAan = false;
         List<string> alleGegevens = new List<string>();
         public frminstellingen()
         {
@@ -134,7 +135,7 @@ namespace Project_fietscomptuer
                 serial.Open();
                 if (serial.IsOpen == true)
                 {
-                    this.Text = "connectie gemaakt met poort: " + poort;
+                    this.Text = "Connectie gemaakt met poort: " + poort;
                 }
             }
             catch (System.Exception ex)
@@ -147,14 +148,16 @@ namespace Project_fietscomptuer
         {
             try
             {
-                if (e.EventType == System.IO.Ports.SerialPinChange.DsrChanged  && serial.DsrHolding   == true)
+                if (e.EventType == System.IO.Ports.SerialPinChange.CtsChanged  && serial.CtsHolding == true)
                 {
                     TestToeren++;
+                    serieelAan = true;
                     this.Invoke(new MethodInvoker(delegate ()
                 {
                     lblWiel.Text = "Wiel: " + TestToeren + " Toeren";
                     btnTestRenner_Click(sender, e);
-                    lblAfstandRoute.Text = (tellerAfgelegdeafstand / 1000).ToString() + " km";
+                    ritAfgelegdeAfstandLabel = (ritAfgelegdeAfstand - wiellengte) / 1000;
+                    lblAfstandRoute.Text = ritAfgelegdeAfstandLabel.ToString() + " km";
                 }));
                 }
             }
@@ -170,7 +173,6 @@ namespace Project_fietscomptuer
             picFiets.Left = lblStart.Left;
             picFiets.Top = lblStart.Top;
             ritAfgelegdeAfstand = 0;
-            tellerAfgelegdeafstand = 0;
         }
 
         private void num_ValueChanged(object sender, EventArgs e)
@@ -184,7 +186,6 @@ namespace Project_fietscomptuer
                 wiellengte = (float)numWielLengte.Value;
             }
             ritAfgelegdeAfstand = 0;
-            tellerAfgelegdeafstand = 0;
         }
         private void btnTestRenner_Click(object sender, EventArgs e)
         {
@@ -219,20 +220,16 @@ namespace Project_fietscomptuer
             }
 
             //kijken als finish reeds bereikt werd
-            if (ritAfgelegdeAfstand == 0)
+            if (ritAfgelegdeAfstand == 0 )
             {
                 picFiets.Left = lblStart.Left;
                 picFiets.Top = lblStart.Top;
                 beweegTop = 0; beweegLeft = 0;
-                tellerAfgelegdeafstand = 0;
             }
             if (ritAfgelegdeAfstand < ritAfstand)
             {
                 //fietstersafstand bijhouden zodat je weet als hoe ver hij zit
                 ritAfgelegdeAfstand += wiellengte;
-                tellerAfgelegdeafstand += wiellengte;
-                af++;
-                if (af == 1) tellerAfgelegdeafstand -= wiellengte;
             }
             else
             {
@@ -240,10 +237,15 @@ namespace Project_fietscomptuer
                 picFiets.Left = lblFinish.Left;
                 picFiets.Top = lblFinish.Top;
                 //af te leggen afstand terug op 0 om volgende keer terug te kunnen starten
-                ritAfgelegdeAfstand = 0;
-                tellerAfgelegdeafstand = 0;
+                if (serieelAan == false)
+                {
+                    lblAfstandRoute.Text = ((ritAfstand + wiellengte) / 1000).ToString();
+                    ritAfgelegdeAfstand = 0;
+                } 
                 tmrSimuleerRit.Stop();
             }
+            serieelAan = false;
+            lblAfstandRoute.Text = (ritAfstand + wiellengte).ToString();
         }
 
         private void startFinish_MouseMove(object sender, MouseEventArgs e)
@@ -254,14 +256,12 @@ namespace Project_fietscomptuer
                 lblStart.Top = point.Y - Cursor.Size.Height / 2;
                 lblStart.Left = point.X - Cursor.Size.Width / 2;
                 ritAfgelegdeAfstand = 0;
-                tellerAfgelegdeafstand = 0;
             }
             if (e.Button == MouseButtons.Left && point != lblFinish.Location && sender == lblFinish)
             {
                 lblFinish.Top = point.Y - Cursor.Size.Height / 2;
                 lblFinish.Left = point.X - Cursor.Size.Width / 2;
                 ritAfgelegdeAfstand = 0;
-                tellerAfgelegdeafstand = 0;
             }
         }
     }    
