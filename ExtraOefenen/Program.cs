@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WinFormAppCursus
+namespace ExtraOefenen
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace WinFormAppCursus
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmHoofd());
+            Application.Run(new frmConnectHoofd());
         }
     }
 }
