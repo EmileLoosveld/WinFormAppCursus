@@ -13,7 +13,7 @@ namespace ExtraOefenen
     public partial class frmConnectSub : Form
     {
         frmConnectHoofd frmConnectHoofd1;                                               //Form als variable voor refernetie
-        public frmConnectSub(frmConnectHoofd frmConnectHoofd)                           //Gewoon doen
+        public frmConnectSub(frmConnectHoofd frmCfonnectHoofd)                           //Gewoon doen
         {
             InitializeComponent();
             this.frmConnectHoofd1 = frmConnectHoofd;                                    //Gewoon doen
