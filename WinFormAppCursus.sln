@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtraOefenen", "ExtraOefene
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GO6ICTStartProgramma", "GO6ICTStartProgramma\GO6ICTStartProgramma\GO6ICTStartProgramma.csproj", "{9BD14024-3564-4775-874E-924AF162474E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opdracht bluetooth", "Opdracht bluetooth\Opdracht bluetooth.csproj", "{0F855EC3-4088-4AD6-B10E-1F1983472B03}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +123,14 @@ Global
 		{9BD14024-3564-4775-874E-924AF162474E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9BD14024-3564-4775-874E-924AF162474E}.Release|x86.ActiveCfg = Release|Any CPU
 		{9BD14024-3564-4775-874E-924AF162474E}.Release|x86.Build.0 = Release|Any CPU
+		{0F855EC3-4088-4AD6-B10E-1F1983472B03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F855EC3-4088-4AD6-B10E-1F1983472B03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F855EC3-4088-4AD6-B10E-1F1983472B03}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0F855EC3-4088-4AD6-B10E-1F1983472B03}.Debug|x86.Build.0 = Debug|Any CPU
+		{0F855EC3-4088-4AD6-B10E-1F1983472B03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F855EC3-4088-4AD6-B10E-1F1983472B03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F855EC3-4088-4AD6-B10E-1F1983472B03}.Release|x86.ActiveCfg = Release|Any CPU
+		{0F855EC3-4088-4AD6-B10E-1F1983472B03}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
