@@ -53,12 +53,13 @@ namespace Opdracht_bluetooth
             try
             {
                 string data = serial.ReadExisting();
-                if (data == "disconnect")
+                if (data == "disconnect\n")
                 {
                     serial.Close();
                     lstPoort.SelectedIndex = -1;
                     btnZoekPoorten.Enabled = true;
                     btnCloseSerial.Enabled = false;
+                    lstPoort.SelectedIndex = -1;
                 }
                 else
                 {
@@ -80,6 +81,7 @@ namespace Opdracht_bluetooth
             {
                 serial.WriteLine("Ander: " + txtInvullen.Text + "\r\n");
                 txttekst.AppendText("Ik: " + txtInvullen.Text + "\r\n");
+                txtInvullen.Clear();
             }
         }
 
@@ -95,6 +97,12 @@ namespace Opdracht_bluetooth
             lstPoort.SelectedIndex = -1;
             btnZoekPoorten.Enabled = true;
             btnCloseSerial.Enabled = false;
+            lstPoort.SelectedIndex = -1;
+        }
+
+        private void frmHoofd_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

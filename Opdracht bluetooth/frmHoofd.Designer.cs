@@ -114,6 +114,7 @@ namespace Opdracht_bluetooth
             this.Name = "frmHoofd";
             this.Text = "Bluetooth communicatie";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmHoofd_FormClosing);
+            this.Load += new System.EventHandler(this.frmHoofd_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
