@@ -29,6 +29,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opdracht bluetooth", "Opdra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsAppTCPIPServer", "WinFormsAppTCPIPServer\WinFormsAppTCPIPServer.csproj", "{E986EBCD-81CE-4BFF-A636-315F4C35B562}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsAppTCPIPClient", "WinFormsAppTCPIPClient\WinFormsAppTCPIPClient\WinFormsAppTCPIPClient.csproj", "{C1645AA4-2BD7-413D-94ED-AB504482883E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinAppMediaPlayerVersie2", "WinAppMediaPlayerVersie2\WinAppMediaPlayerVersie2.csproj", "{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -141,6 +145,22 @@ Global
 		{E986EBCD-81CE-4BFF-A636-315F4C35B562}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E986EBCD-81CE-4BFF-A636-315F4C35B562}.Release|x86.ActiveCfg = Release|Any CPU
 		{E986EBCD-81CE-4BFF-A636-315F4C35B562}.Release|x86.Build.0 = Release|Any CPU
+		{C1645AA4-2BD7-413D-94ED-AB504482883E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1645AA4-2BD7-413D-94ED-AB504482883E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1645AA4-2BD7-413D-94ED-AB504482883E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C1645AA4-2BD7-413D-94ED-AB504482883E}.Debug|x86.Build.0 = Debug|Any CPU
+		{C1645AA4-2BD7-413D-94ED-AB504482883E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1645AA4-2BD7-413D-94ED-AB504482883E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1645AA4-2BD7-413D-94ED-AB504482883E}.Release|x86.ActiveCfg = Release|Any CPU
+		{C1645AA4-2BD7-413D-94ED-AB504482883E}.Release|x86.Build.0 = Release|Any CPU
+		{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}.Debug|x86.Build.0 = Debug|Any CPU
+		{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}.Release|x86.ActiveCfg = Release|Any CPU
+		{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
