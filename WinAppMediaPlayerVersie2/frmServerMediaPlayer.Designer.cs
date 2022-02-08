@@ -49,6 +49,7 @@ namespace WinAppMediaPlayerVersie2
             this.btnVoegSongToe = new System.Windows.Forms.Button();
             this.tabServer = new System.Windows.Forms.TabPage();
             this.tabPlaylist = new System.Windows.Forms.TabPage();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1.SuspendLayout();
             this.tabMediaPlayer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContMediaPlayer)).BeginInit();
@@ -77,7 +78,7 @@ namespace WinAppMediaPlayerVersie2
             this.tabControl1.Controls.Add(this.tabPlaylist);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1191, 636);
@@ -87,9 +88,9 @@ namespace WinAppMediaPlayerVersie2
             // 
             this.tabMediaPlayer.Controls.Add(this.splitContMediaPlayer);
             this.tabMediaPlayer.Location = new System.Drawing.Point(4, 22);
-            this.tabMediaPlayer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabMediaPlayer.Margin = new System.Windows.Forms.Padding(2);
             this.tabMediaPlayer.Name = "tabMediaPlayer";
-            this.tabMediaPlayer.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabMediaPlayer.Padding = new System.Windows.Forms.Padding(2);
             this.tabMediaPlayer.Size = new System.Drawing.Size(1183, 610);
             this.tabMediaPlayer.TabIndex = 0;
             this.tabMediaPlayer.Text = "MediaPlayer";
@@ -99,7 +100,7 @@ namespace WinAppMediaPlayerVersie2
             // 
             this.splitContMediaPlayer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContMediaPlayer.Location = new System.Drawing.Point(2, 2);
-            this.splitContMediaPlayer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContMediaPlayer.Margin = new System.Windows.Forms.Padding(2);
             this.splitContMediaPlayer.Name = "splitContMediaPlayer";
             this.splitContMediaPlayer.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -127,7 +128,7 @@ namespace WinAppMediaPlayerVersie2
             this.pnlPlaylist.Controls.Add(this.label2);
             this.pnlPlaylist.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlPlaylist.Location = new System.Drawing.Point(418, 0);
-            this.pnlPlaylist.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlPlaylist.Margin = new System.Windows.Forms.Padding(2);
             this.pnlPlaylist.Name = "pnlPlaylist";
             this.pnlPlaylist.Size = new System.Drawing.Size(761, 466);
             this.pnlPlaylist.TabIndex = 4;
@@ -137,7 +138,7 @@ namespace WinAppMediaPlayerVersie2
             this.lstPlaylistSongs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstPlaylistSongs.FormattingEnabled = true;
             this.lstPlaylistSongs.Location = new System.Drawing.Point(0, 13);
-            this.lstPlaylistSongs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lstPlaylistSongs.Margin = new System.Windows.Forms.Padding(2);
             this.lstPlaylistSongs.Name = "lstPlaylistSongs";
             this.lstPlaylistSongs.Size = new System.Drawing.Size(761, 453);
             this.lstPlaylistSongs.TabIndex = 1;
@@ -156,7 +157,7 @@ namespace WinAppMediaPlayerVersie2
             // splitter2
             // 
             this.splitter2.Location = new System.Drawing.Point(412, 0);
-            this.splitter2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitter2.Margin = new System.Windows.Forms.Padding(2);
             this.splitter2.Name = "splitter2";
             this.splitter2.Size = new System.Drawing.Size(6, 466);
             this.splitter2.TabIndex = 3;
@@ -169,7 +170,7 @@ namespace WinAppMediaPlayerVersie2
             this.pnlKnoppen.Controls.Add(this.btnVoegToePlayList);
             this.pnlKnoppen.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlKnoppen.Location = new System.Drawing.Point(360, 0);
-            this.pnlKnoppen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlKnoppen.Margin = new System.Windows.Forms.Padding(2);
             this.pnlKnoppen.Name = "pnlKnoppen";
             this.pnlKnoppen.Size = new System.Drawing.Size(52, 466);
             this.pnlKnoppen.TabIndex = 2;
@@ -177,27 +178,31 @@ namespace WinAppMediaPlayerVersie2
             // btnVerwijderPlayList
             // 
             this.btnVerwijderPlayList.Location = new System.Drawing.Point(8, 49);
-            this.btnVerwijderPlayList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnVerwijderPlayList.Margin = new System.Windows.Forms.Padding(2);
             this.btnVerwijderPlayList.Name = "btnVerwijderPlayList";
             this.btnVerwijderPlayList.Size = new System.Drawing.Size(40, 29);
             this.btnVerwijderPlayList.TabIndex = 1;
+            this.btnVerwijderPlayList.Tag = "<<";
             this.btnVerwijderPlayList.Text = "<<";
             this.btnVerwijderPlayList.UseVisualStyleBackColor = true;
+            this.btnVerwijderPlayList.Click += new System.EventHandler(this.btnVerwijderPlayList_Click);
             // 
             // btnVoegToePlayList
             // 
             this.btnVoegToePlayList.Location = new System.Drawing.Point(8, 15);
-            this.btnVoegToePlayList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnVoegToePlayList.Margin = new System.Windows.Forms.Padding(2);
             this.btnVoegToePlayList.Name = "btnVoegToePlayList";
             this.btnVoegToePlayList.Size = new System.Drawing.Size(40, 29);
             this.btnVoegToePlayList.TabIndex = 0;
+            this.btnVoegToePlayList.Tag = ">>";
             this.btnVoegToePlayList.Text = ">>";
             this.btnVoegToePlayList.UseVisualStyleBackColor = true;
+            this.btnVoegToePlayList.Click += new System.EventHandler(this.btnVerwijderPlayList_Click);
             // 
             // splitter1
             // 
             this.splitter1.Location = new System.Drawing.Point(354, 0);
-            this.splitter1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitter1.Margin = new System.Windows.Forms.Padding(2);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(6, 466);
             this.splitter1.TabIndex = 1;
@@ -209,7 +214,7 @@ namespace WinAppMediaPlayerVersie2
             this.pnlAlleSongs.Controls.Add(this.label1);
             this.pnlAlleSongs.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlAlleSongs.Location = new System.Drawing.Point(0, 0);
-            this.pnlAlleSongs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlAlleSongs.Margin = new System.Windows.Forms.Padding(2);
             this.pnlAlleSongs.Name = "pnlAlleSongs";
             this.pnlAlleSongs.Size = new System.Drawing.Size(354, 466);
             this.pnlAlleSongs.TabIndex = 0;
@@ -219,7 +224,7 @@ namespace WinAppMediaPlayerVersie2
             this.lstAlleSongs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstAlleSongs.FormattingEnabled = true;
             this.lstAlleSongs.Location = new System.Drawing.Point(0, 13);
-            this.lstAlleSongs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lstAlleSongs.Margin = new System.Windows.Forms.Padding(2);
             this.lstAlleSongs.Name = "lstAlleSongs";
             this.lstAlleSongs.Size = new System.Drawing.Size(354, 453);
             this.lstAlleSongs.TabIndex = 1;
@@ -239,42 +244,45 @@ namespace WinAppMediaPlayerVersie2
             // 
             this.btnStopPlay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnStopPlay.Location = new System.Drawing.Point(134, 67);
-            this.btnStopPlay.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStopPlay.Margin = new System.Windows.Forms.Padding(2);
             this.btnStopPlay.Name = "btnStopPlay";
             this.btnStopPlay.Size = new System.Drawing.Size(1045, 70);
             this.btnStopPlay.TabIndex = 2;
             this.btnStopPlay.Text = "Playlist stoppen";
             this.btnStopPlay.UseVisualStyleBackColor = true;
+            this.btnStopPlay.Click += new System.EventHandler(this.btnStopPlay_Click);
             // 
             // btnStartPlay
             // 
             this.btnStartPlay.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnStartPlay.Location = new System.Drawing.Point(134, 0);
-            this.btnStartPlay.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStartPlay.Margin = new System.Windows.Forms.Padding(2);
             this.btnStartPlay.Name = "btnStartPlay";
             this.btnStartPlay.Size = new System.Drawing.Size(1045, 67);
             this.btnStartPlay.TabIndex = 1;
             this.btnStartPlay.Text = "Playlist afspelen";
             this.btnStartPlay.UseVisualStyleBackColor = true;
+            this.btnStartPlay.Click += new System.EventHandler(this.btnStartPlay_Click);
             // 
             // btnVoegSongToe
             // 
             this.btnVoegSongToe.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnVoegSongToe.Location = new System.Drawing.Point(0, 0);
-            this.btnVoegSongToe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnVoegSongToe.Margin = new System.Windows.Forms.Padding(2);
             this.btnVoegSongToe.Name = "btnVoegSongToe";
             this.btnVoegSongToe.Size = new System.Drawing.Size(134, 137);
             this.btnVoegSongToe.TabIndex = 0;
             this.btnVoegSongToe.Text = "Song zoeken ...";
             this.btnVoegSongToe.UseVisualStyleBackColor = true;
+            this.btnVoegSongToe.Click += new System.EventHandler(this.btnVoegSongToe_Click);
             // 
             // tabServer
             // 
             this.tabServer.Location = new System.Drawing.Point(4, 22);
-            this.tabServer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabServer.Margin = new System.Windows.Forms.Padding(2);
             this.tabServer.Name = "tabServer";
-            this.tabServer.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabServer.Size = new System.Drawing.Size(1183, 614);
+            this.tabServer.Padding = new System.Windows.Forms.Padding(2);
+            this.tabServer.Size = new System.Drawing.Size(1183, 610);
             this.tabServer.TabIndex = 1;
             this.tabServer.Text = "TCP/IP Server";
             this.tabServer.UseVisualStyleBackColor = true;
@@ -282,12 +290,18 @@ namespace WinAppMediaPlayerVersie2
             // tabPlaylist
             // 
             this.tabPlaylist.Location = new System.Drawing.Point(4, 22);
-            this.tabPlaylist.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPlaylist.Margin = new System.Windows.Forms.Padding(2);
             this.tabPlaylist.Name = "tabPlaylist";
-            this.tabPlaylist.Size = new System.Drawing.Size(1183, 614);
+            this.tabPlaylist.Size = new System.Drawing.Size(1183, 610);
             this.tabPlaylist.TabIndex = 2;
             this.tabPlaylist.Text = "PlayLijsten database";
             this.tabPlaylist.UseVisualStyleBackColor = true;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.DefaultExt = "mp3";
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "mp3 files (*.mp3)|*.mp3|mp4 files (*.mp4)|*.mp4|mov files (*.mov)|*.mov";
             // 
             // frmServerMediaPlayer
             // 
@@ -296,10 +310,11 @@ namespace WinAppMediaPlayerVersie2
             this.ClientSize = new System.Drawing.Size(1191, 658);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.statusStrip1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmServerMediaPlayer";
             this.Text = "MediaPlayer - Server";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmServerMediaPlayer_Load);
             this.Shown += new System.EventHandler(this.frmServerMediaPlayer_Shown);
             this.tabControl1.ResumeLayout(false);
             this.tabMediaPlayer.ResumeLayout(false);
@@ -339,6 +354,7 @@ namespace WinAppMediaPlayerVersie2
         private System.Windows.Forms.Button btnStopPlay;
         private System.Windows.Forms.Button btnStartPlay;
         private System.Windows.Forms.Button btnVoegSongToe;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 
