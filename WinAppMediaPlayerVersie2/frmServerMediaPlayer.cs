@@ -23,16 +23,13 @@ namespace WinAppMediaPlayerVersie2
         {
             string pad = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "muziek");
             if (!Directory.Exists(pad))
-            {
                 Directory.CreateDirectory(pad);
-            }
 
             foreach (string file in Directory.GetFiles(pad))
             {
-                if (Path.GetExtension(file) == "mp3")
+                if (Path.GetExtension(file) == ".mp3")
                 {
-                    lstAlleSongs.Items.Add(file);
-                    lstAlleSongs.Items.Add(Path.GetFileNameWithoutExtension(file));
+                    lstAlleSongs.Items.Add(Path.GetFileName(file));
                 }
             }
             //afspeellijst aanmaken
@@ -46,8 +43,9 @@ namespace WinAppMediaPlayerVersie2
 
         private void btnStartPlay_Click(object sender, EventArgs e)
         {
-            Player.currentPlaylist = Player.mediaCollection.getByName("");
-
+            string pad = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "muziek", lstPlaylistSongs.SelectedItem.ToString());
+            this.Text = pad;
+            Player.URL = pad;
         }
 
         private void btnStopPlay_Click(object sender, EventArgs e)
@@ -59,23 +57,33 @@ namespace WinAppMediaPlayerVersie2
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                lstAlleSongs.Items.Add(openFileDialog1.FileName);
+                string pad = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "muziek");
+                if (!Directory.Exists(pad))
+                    Directory.CreateDirectory(pad);
+                if (lstAlleSongs.Items.Contains(Path.GetFileName(openFileDialog1.FileName)) == false)
+                {
+                    lstAlleSongs.Items.Add(Path.GetFileName(openFileDialog1.FileName));
+                    File.Copy(openFileDialog1.FileName, pad + "\\" +Path.GetFileName(openFileDialog1.FileName));
+                }
             }
         }
 
         private void btnVerwijderPlayList_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
-            switch (btn.Tag.ToString())
+            if (lstAlleSongs.SelectedIndex > -1 || lstPlaylistSongs.SelectedIndex > -1)
             {
-                case "<<":
-                    lstAlleSongs.Items.Add(lstPlaylistSongs.SelectedItem);
-                    lstPlaylistSongs.Items.Remove(lstPlaylistSongs.SelectedItem);
-                    break;
-                case ">>":
-                    lstPlaylistSongs.Items.Add(lstAlleSongs.SelectedItem);
-                    lstAlleSongs.Items.Remove(lstAlleSongs.SelectedItem);
-                    break;
+                switch (btn.Tag.ToString())
+                {
+                    case "<<":
+                        lstAlleSongs.Items.Add(lstPlaylistSongs.SelectedItem);
+                        lstPlaylistSongs.Items.Remove(lstPlaylistSongs.SelectedItem);
+                        break;
+                    case ">>":
+                        lstPlaylistSongs.Items.Add(lstAlleSongs.SelectedItem);
+                        lstAlleSongs.Items.Remove(lstAlleSongs.SelectedItem);
+                        break;
+                }
             }
         }
     }
