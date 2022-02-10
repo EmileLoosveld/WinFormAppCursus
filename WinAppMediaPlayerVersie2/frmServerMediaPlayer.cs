@@ -33,7 +33,7 @@ namespace WinAppMediaPlayerVersie2
                 }
             }
             //afspeellijst aanmaken
-            Player.currentPlaylist = Player.newPlaylist("Klas", "");
+            Player.currentPlaylist = Player.newPlaylist("Klas", pad);
         }
 
         private void frmServerMediaPlayer_Shown(object sender, EventArgs e)
@@ -43,9 +43,7 @@ namespace WinAppMediaPlayerVersie2
 
         private void btnStartPlay_Click(object sender, EventArgs e)
         {
-            string pad = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "muziek", lstPlaylistSongs.SelectedItem.ToString());
-            this.Text = pad;
-            Player.URL = pad;
+            Player.controls.play();
         }
 
         private void btnStopPlay_Click(object sender, EventArgs e)
@@ -80,8 +78,14 @@ namespace WinAppMediaPlayerVersie2
                         lstPlaylistSongs.Items.Remove(lstPlaylistSongs.SelectedItem);
                         break;
                     case ">>":
+                        if (lstAlleSongs.SelectedIndex == -1) return;
+                        if (lstPlaylistSongs.Items.Contains(lstAlleSongs.SelectedItem.ToString()))
+                        {
+                            MessageBox.Show("Deze song bestaat al");
+                            break;
+                        }
                         lstPlaylistSongs.Items.Add(lstAlleSongs.SelectedItem);
-                        lstAlleSongs.Items.Remove(lstAlleSongs.SelectedItem);
+                        Player.currentPlaylist.appendItem(Player.newMedia(lstAlleSongs.SelectedItem.ToString()));
                         break;
                 }
             }
