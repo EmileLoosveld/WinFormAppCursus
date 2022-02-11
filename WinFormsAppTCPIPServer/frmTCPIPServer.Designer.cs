@@ -82,7 +82,7 @@ namespace WinFormsAppTCPIPServer
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel2);
             this.splitContainer1.Panel2.Enabled = false;
             this.splitContainer1.Size = new System.Drawing.Size(354, 618);
-            this.splitContainer1.SplitterDistance = 520;
+            this.splitContainer1.SplitterDistance = 521;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -105,7 +105,7 @@ namespace WinFormsAppTCPIPServer
             this.splitContainer2.Panel2.AutoScroll = true;
             this.splitContainer2.Panel2.Controls.Add(this.txtCommunicatie);
             this.splitContainer2.Panel2.Controls.Add(this.label4);
-            this.splitContainer2.Size = new System.Drawing.Size(354, 448);
+            this.splitContainer2.Size = new System.Drawing.Size(354, 449);
             this.splitContainer2.SplitterDistance = 268;
             this.splitContainer2.SplitterWidth = 3;
             this.splitContainer2.TabIndex = 1;
@@ -140,7 +140,7 @@ namespace WinFormsAppTCPIPServer
             this.txtCommunicatie.Multiline = true;
             this.txtCommunicatie.Name = "txtCommunicatie";
             this.txtCommunicatie.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtCommunicatie.Size = new System.Drawing.Size(354, 150);
+            this.txtCommunicatie.Size = new System.Drawing.Size(354, 151);
             this.txtCommunicatie.TabIndex = 2;
             // 
             // label4
@@ -226,6 +226,7 @@ namespace WinFormsAppTCPIPServer
             this.mtxtIPadres.TabIndex = 2;
             this.mtxtIPadres.Text = "127000000001";
             this.mtxtIPadres.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.mtxtIPadres.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mtxtIPadres_MaskInputRejected);
             // 
             // mtxtPoortnr
             // 
@@ -268,7 +269,7 @@ namespace WinFormsAppTCPIPServer
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(354, 95);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(354, 94);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
             // txtBericht
@@ -287,7 +288,7 @@ namespace WinFormsAppTCPIPServer
             this.btnZend.Location = new System.Drawing.Point(2, 50);
             this.btnZend.Margin = new System.Windows.Forms.Padding(2);
             this.btnZend.Name = "btnZend";
-            this.btnZend.Size = new System.Drawing.Size(452, 43);
+            this.btnZend.Size = new System.Drawing.Size(452, 42);
             this.btnZend.TabIndex = 8;
             this.btnZend.Text = "Stuur bericht naar Client";
             this.btnZend.UseVisualStyleBackColor = true;

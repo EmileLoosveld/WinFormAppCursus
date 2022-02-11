@@ -101,8 +101,8 @@ namespace WinFormsAppTCPIPClient
         {
             try
             {
-                Writer.WriteLine("CLIENT >>>" + txtBericht.Text);
-                txtCommunicatie.AppendText("CLIENT >>>" + txtBericht.Text + "\r\n");
+                Writer.WriteLine("CLIENT  >>> " + txtBericht.Text);
+                txtCommunicatie.AppendText("CLIENT  >>> " + txtBericht.Text + "\r\n");
             }
             catch
             {

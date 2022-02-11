@@ -10,6 +10,8 @@ using System.Windows.Forms;
 //extra bibliotheken MediaPlayer
 using WMPLib;
 using System.IO;
+using System.Net.Sockets;
+using System.Net;
 
 namespace WinAppMediaPlayerVersie2
 {
@@ -109,5 +111,167 @@ namespace WinAppMediaPlayerVersie2
             tssMediaPlayer.ForeColor = Color.Red;
         }
         #endregion
+        #region TCP/IP
+        TcpListener listener;
+        TcpClient client;
+        StreamReader Reader;
+        StreamWriter Writer;
+
+        private void chkbStartStopServer_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkbStartStopServer.Checked)
+            {
+                //Controle IP-adres
+                IPAddress ipadres;
+                int poortNr;
+                if (!IPAddress.TryParse(mtxtIPadres.Text.Replace(" ", " "), out ipadres))
+                {
+                    txtMelding.AppendText("Ongeldig IPAdres!\r\n");
+                    mtxtIPadres.Focus();
+                    return;
+                }
+                if (!int.TryParse(mtxtPoortnr.Text, out poortNr))
+                {
+                    txtMelding.AppendText("Ongeldig poortnummer!\r\n");
+                    mtxtPoortnr.Focus();
+                    return;
+                }
+                //listener opzetten
+                try
+                {
+                    listener = new TcpListener(ipadres, poortNr);
+                    listener.Start();
+                    //backgroundworker starten
+                    bgWorkerListener.WorkerSupportsCancellation = true;
+                    bgWorkerListener.RunWorkerAsync();
+                    txtMelding.AppendText("Server opgestart!\r\n");
+                    chkbStartStopServer.Text = "Stop server";
+                }
+                catch
+                {
+                    txtMelding.AppendText("Server kan niet gestart worden," + "controleer IPAdres en Poortnummer!\r\n");
+                    chkbStartStopServer.Checked = false;
+                }
+                tssTCPServer.Text = "TCP/IP Server gestart";
+                tssTCPServer.ForeColor = Color.Green;
+            }
+            else //server stoppen
+            {
+                if (client != null && client.Connected)
+                {
+                    Writer.WriteLine("Disconnect");
+                    bgWorkerOntvang.CancelAsync();
+                }
+                try //server stoppen
+                {
+                    if (listener != null)
+                    {
+                        if (client != null && client.Connected) client.Close();
+                        listener.Stop();
+                    }
+                    chkbStartStopServer.Text = "Start Server";
+                    txtMelding.AppendText("Server gestopt!\r\n");
+                    tssTCPServer.Text = "TCP/IP Server gestopt";
+                    tssTCPServer.ForeColor = Color.Red;
+                }
+                catch
+                {
+                    txtMelding.AppendText("Server kan niet gestopt worden.\r\n");
+                }
+            }
+        }
+
+        private void bgWorkerOntvang_DoWork(object sender, DoWorkEventArgs e)
+        {
+            while (client.Connected)
+            {
+                string bericht;
+                try
+                {
+                    bericht = Reader.ReadLine();
+                    if (bericht == "Disconnect") break;
+                    this.txtOntvang.Invoke(new MethodInvoker(
+                        delegate ()
+                        {
+                            txtOntvang.AppendText(bericht + "\r\n");
+                        }));
+                }
+                catch
+                {
+                    this.txtMelding.Invoke(new MethodInvoker(
+                        delegate ()
+                        {
+                            txtMelding.AppendText("Kan bericht niet ontvangen.\r\n");
+                        }));
+                }
+            }
+        }
+
+        private void bgWorkerOntvang_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Writer.Close();
+            Reader.Close();
+            client.Close();
+            txtMelding.AppendText("Verbinding met client is verbroken!\r\n");
+            btnVerbreek.Enabled = false;
+            //bgworkerlistener opnieuw starten als server nog niet gestart is.
+            if (chkbStartStopServer.Checked)
+                bgWorkerListener.RunWorkerAsync();
+            btnZend.Enabled = false;
+            tssClient.Text = "Client niet verbonden";
+            tssClient.ForeColor = Color.Red;
+        }
+
+        private void btnVerbreek_Click(object sender, EventArgs e)
+        {
+            Writer.WriteLine("Disconnect");
+            client.Close();
+        }
+
+        private void bgWorkerListener_DoWork(object sender, DoWorkEventArgs e)
+        {
+            client = listener.AcceptTcpClient(); //1 client aanvaarden
+        }
+
+        private void bgWorkerListener_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            //listener stop met wachten als client verbonden is
+            //of als hij gestopt werd -> dan client niet starten
+            if (client != null && client.Connected)
+            {
+                //Communicatie met client opzetten
+                Reader = new StreamReader(client.GetStream());
+                Writer = new StreamWriter(client.GetStream());
+                Writer.AutoFlush = true;
+                bgWorkerOntvang.WorkerSupportsCancellation = true;
+                bgWorkerOntvang.RunWorkerAsync(); //start ontvangen data
+                btnVerbreek.Enabled = true;
+                txtMelding.AppendText("Client verbonden!\r\n");
+                btnZend.Enabled = true;
+                tssClient.Text = "Client verbonden";
+                tssClient.ForeColor = Color.Green;
+                //Sturen data van de song & playlist
+                Writer.WriteLine("SONGLISTADD");
+                foreach (string song in lstAlleSongs.Items)
+                    Writer.Write(song);
+                //Writer.WriteLine("SONGLISTADD" + lstAlleSongs.Items[0]);
+                //Writer.WriteLine("PLAYLISTADD" + lstPlaylistSongs.Items[0]);
+            }
+        }
+
+        #endregion
+
+        private void btnZend_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Writer.WriteLine("SERVER >>> " + txtZend.Text);
+                txtOntvang.AppendText("SERVER >>> " + txtZend.Text + "\r\n");
+            }
+            catch
+            {
+                txtMelding.AppendText("Bericht zenden mislukt\r\n");
+            }
+        }
     }
 }

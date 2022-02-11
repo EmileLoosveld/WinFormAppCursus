@@ -71,6 +71,7 @@ namespace WinAppMediaPlayerVersie2
             this.tabPlaylist = new System.Windows.Forms.TabPage();
             this.ofdZoekSong = new System.Windows.Forms.OpenFileDialog();
             this.bgWorkerListener = new System.ComponentModel.BackgroundWorker();
+            this.bgWorkerOntvang = new System.ComponentModel.BackgroundWorker();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabMediaPlayer.SuspendLayout();
@@ -115,8 +116,8 @@ namespace WinAppMediaPlayerVersie2
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(13, 17);
-            this.toolStripStatusLabel1.Text = "||";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(12, 17);
+            this.toolStripStatusLabel1.Text = "-";
             // 
             // tssTCPServer
             // 
@@ -128,8 +129,8 @@ namespace WinAppMediaPlayerVersie2
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(13, 17);
-            this.toolStripStatusLabel3.Text = "||";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(12, 17);
+            this.toolStripStatusLabel3.Text = "-";
             // 
             // tssClient
             // 
@@ -385,6 +386,7 @@ namespace WinAppMediaPlayerVersie2
             this.txtMelding.Location = new System.Drawing.Point(0, 13);
             this.txtMelding.Multiline = true;
             this.txtMelding.Name = "txtMelding";
+            this.txtMelding.ReadOnly = true;
             this.txtMelding.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtMelding.Size = new System.Drawing.Size(305, 387);
             this.txtMelding.TabIndex = 26;
@@ -405,6 +407,7 @@ namespace WinAppMediaPlayerVersie2
             this.txtOntvang.Location = new System.Drawing.Point(0, 13);
             this.txtOntvang.Multiline = true;
             this.txtOntvang.Name = "txtOntvang";
+            this.txtOntvang.ReadOnly = true;
             this.txtOntvang.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtOntvang.Size = new System.Drawing.Size(608, 330);
             this.txtOntvang.TabIndex = 30;
@@ -437,6 +440,7 @@ namespace WinAppMediaPlayerVersie2
             this.btnZend.TabIndex = 27;
             this.btnZend.Text = "Zend bericht naar naar Client";
             this.btnZend.UseVisualStyleBackColor = true;
+            this.btnZend.Click += new System.EventHandler(this.btnZend_Click);
             // 
             // label6
             // 
@@ -520,6 +524,7 @@ namespace WinAppMediaPlayerVersie2
             this.chkbStartStopServer.Text = "Start de Server";
             this.chkbStartStopServer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkbStartStopServer.UseVisualStyleBackColor = true;
+            this.chkbStartStopServer.CheckedChanged += new System.EventHandler(this.chkbStartStopServer_CheckedChanged);
             // 
             // btnVerbreek
             // 
@@ -532,6 +537,7 @@ namespace WinAppMediaPlayerVersie2
             this.btnVerbreek.TabIndex = 3;
             this.btnVerbreek.Text = "Verbreek verbinding met de Client";
             this.btnVerbreek.UseVisualStyleBackColor = true;
+            this.btnVerbreek.Click += new System.EventHandler(this.btnVerbreek_Click);
             // 
             // tabPlaylist
             // 
@@ -547,6 +553,16 @@ namespace WinAppMediaPlayerVersie2
             // 
             this.ofdZoekSong.Filter = "\"mp3-bestand\"|*.mp3|\"mp4-bestand\"|*.mp4|\"wav-bestand\"|*.wav";
             this.ofdZoekSong.Title = "Song toevoegen";
+            // 
+            // bgWorkerListener
+            // 
+            this.bgWorkerListener.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerListener_DoWork);
+            this.bgWorkerListener.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerListener_RunWorkerCompleted);
+            // 
+            // bgWorkerOntvang
+            // 
+            this.bgWorkerOntvang.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerOntvang_DoWork);
+            this.bgWorkerOntvang.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerOntvang_RunWorkerCompleted);
             // 
             // frmServerMediaPlayer
             // 
@@ -632,6 +648,7 @@ namespace WinAppMediaPlayerVersie2
         private System.Windows.Forms.MaskedTextBox mtxtPoortnr;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.MaskedTextBox mtxtIPadres;
+        private System.ComponentModel.BackgroundWorker bgWorkerOntvang;
     }
 }
 

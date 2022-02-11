@@ -164,5 +164,10 @@ namespace WinFormsAppTCPIPServer
             Writer.WriteLine("Disconnect");
             client.Close();
         }
+
+        private void mtxtIPadres_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
     }
 }
