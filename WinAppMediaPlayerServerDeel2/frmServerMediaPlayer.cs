@@ -68,6 +68,10 @@ namespace WinAppMediaPlayerVersie2
                 System.IO.File.Copy(padsong, padmap + "\\" + titel + ".mp3");
                 //toevoegen aan lijst
                 lstAlleSongs.Items.Add(titel);
+                Writer.WriteLine("SONGLISTADD");
+                foreach (string song in lstAlleSongs.Items)
+                    Writer.WriteLine(song);
+
             }
         }
 
@@ -79,6 +83,9 @@ namespace WinAppMediaPlayerVersie2
             //toevoegen aan PlayList
             string padsong = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Application.ExecutablePath), "muziek") + "\\" + lstAlleSongs.SelectedItem.ToString() + ".mp3";
             Player.currentPlaylist.appendItem(Player.newMedia(padsong));
+            Writer.WriteLine("PLAYLISTADD");
+            foreach (string playlist in lstPlaylistSongs.Items)
+                Writer.WriteLine(playlist);
         }
 
         private void btnVerwijderPlayList_Click(object sender, EventArgs e)
@@ -95,6 +102,9 @@ namespace WinAppMediaPlayerVersie2
                 tssMediaPlayer.Text = "Mediaplayer gestopt";
                 tssMediaPlayer.ForeColor = Color.Red;
             }
+            Writer.WriteLine("PLAYLISTREMOVE");
+            foreach (string playlist in lstAlleSongs.Items)
+                Writer.WriteLine(playlist);
         }
 
         private void btnStartPlay_Click(object sender, EventArgs e)
@@ -195,6 +205,15 @@ namespace WinAppMediaPlayerVersie2
                         {
                             txtOntvang.AppendText(bericht + "\r\n");
                         }));
+                    if (bericht.Contains("PLAYLISTADD"))
+                    {
+                        List<string> listStrLineElements = bericht.Split(',').ToList();
+                        if (lstPlaylistSongs.Items.Contains(lstAlleSongs.SelectedItem.ToString())) { MessageBox.Show("Deze song bestaat al!"); return; }
+                        lstPlaylistSongs.Items.Add(lstAlleSongs.SelectedItem);
+                        //toevoegen aan PlayList
+                        string padsong = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Application.ExecutablePath), "muziek") + "\\" + lstAlleSongs.SelectedItem.ToString() + ".mp3";
+                        Player.currentPlaylist.appendItem(Player.newMedia(padsong));
+                    }
                 }
                 catch
                 {
@@ -204,6 +223,7 @@ namespace WinAppMediaPlayerVersie2
                             txtMelding.AppendText("Kan bericht niet ontvangen.\r\n");
                         }));
                 }
+                
             }
         }
 
@@ -253,9 +273,10 @@ namespace WinAppMediaPlayerVersie2
                 //Sturen data van de song & playlist
                 Writer.WriteLine("SONGLISTADD");
                 foreach (string song in lstAlleSongs.Items)
-                    Writer.Write(song);
-                //Writer.WriteLine("SONGLISTADD" + lstAlleSongs.Items[0]);
-                //Writer.WriteLine("PLAYLISTADD" + lstPlaylistSongs.Items[0]);
+                    Writer.WriteLine(song);
+                Writer.Write("PLAYLISTADD");
+                foreach (string playlist in lstPlaylistSongs.Items)
+                    Writer.Write(playlist);
             }
         }
 
@@ -272,6 +293,11 @@ namespace WinAppMediaPlayerVersie2
             {
                 txtMelding.AppendText("Bericht zenden mislukt\r\n");
             }
+        }
+
+        private void mtxtIPadres_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
     }
 }

@@ -81,7 +81,7 @@ namespace WinFormsAppTCPIPClient
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel2);
             this.splitContainer1.Panel2.Enabled = false;
             this.splitContainer1.Size = new System.Drawing.Size(350, 611);
-            this.splitContainer1.SplitterDistance = 513;
+            this.splitContainer1.SplitterDistance = 514;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -104,7 +104,7 @@ namespace WinFormsAppTCPIPClient
             this.splitContainer2.Panel2.AutoScroll = true;
             this.splitContainer2.Panel2.Controls.Add(this.txtCommunicatie);
             this.splitContainer2.Panel2.Controls.Add(this.label4);
-            this.splitContainer2.Size = new System.Drawing.Size(350, 441);
+            this.splitContainer2.Size = new System.Drawing.Size(350, 442);
             this.splitContainer2.SplitterDistance = 264;
             this.splitContainer2.SplitterWidth = 3;
             this.splitContainer2.TabIndex = 1;
@@ -139,7 +139,7 @@ namespace WinFormsAppTCPIPClient
             this.txtCommunicatie.Multiline = true;
             this.txtCommunicatie.Name = "txtCommunicatie";
             this.txtCommunicatie.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtCommunicatie.Size = new System.Drawing.Size(350, 147);
+            this.txtCommunicatie.Size = new System.Drawing.Size(350, 148);
             this.txtCommunicatie.TabIndex = 2;
             // 
             // label4
@@ -263,7 +263,7 @@ namespace WinFormsAppTCPIPClient
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(350, 95);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(350, 94);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
             // txtBericht
@@ -282,7 +282,7 @@ namespace WinFormsAppTCPIPClient
             this.btnZend.Location = new System.Drawing.Point(2, 50);
             this.btnZend.Margin = new System.Windows.Forms.Padding(2);
             this.btnZend.Name = "btnZend";
-            this.btnZend.Size = new System.Drawing.Size(347, 43);
+            this.btnZend.Size = new System.Drawing.Size(347, 42);
             this.btnZend.TabIndex = 8;
             this.btnZend.Text = "Stuur bericht naar Server";
             this.btnZend.UseVisualStyleBackColor = true;

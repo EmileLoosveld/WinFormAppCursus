@@ -500,6 +500,7 @@ namespace WinAppMediaPlayerVersie2
             this.mtxtIPadres.TabIndex = 43;
             this.mtxtIPadres.Text = "127000000001";
             this.mtxtIPadres.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.mtxtIPadres.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mtxtIPadres_MaskInputRejected);
             // 
             // label3
             // 
