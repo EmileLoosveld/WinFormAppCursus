@@ -117,7 +117,7 @@ namespace WinAppMediaPlayerClientVersie2
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel2);
             this.splitContainer1.Panel2.Enabled = false;
             this.splitContainer1.Size = new System.Drawing.Size(926, 582);
-            this.splitContainer1.SplitterDistance = 484;
+            this.splitContainer1.SplitterDistance = 485;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -140,7 +140,7 @@ namespace WinAppMediaPlayerClientVersie2
             this.splitContainer2.Panel2.AutoScroll = true;
             this.splitContainer2.Panel2.Controls.Add(this.txtCommunicatie);
             this.splitContainer2.Panel2.Controls.Add(this.label4);
-            this.splitContainer2.Size = new System.Drawing.Size(926, 412);
+            this.splitContainer2.Size = new System.Drawing.Size(926, 413);
             this.splitContainer2.SplitterDistance = 245;
             this.splitContainer2.SplitterWidth = 3;
             this.splitContainer2.TabIndex = 1;
@@ -177,7 +177,7 @@ namespace WinAppMediaPlayerClientVersie2
             this.txtCommunicatie.Multiline = true;
             this.txtCommunicatie.Name = "txtCommunicatie";
             this.txtCommunicatie.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtCommunicatie.Size = new System.Drawing.Size(926, 139);
+            this.txtCommunicatie.Size = new System.Drawing.Size(926, 140);
             this.txtCommunicatie.TabIndex = 2;
             // 
             // label4
@@ -303,7 +303,7 @@ namespace WinAppMediaPlayerClientVersie2
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(926, 95);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(926, 94);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
             // txtBericht
@@ -322,7 +322,7 @@ namespace WinAppMediaPlayerClientVersie2
             this.btnZend.Location = new System.Drawing.Point(2, 50);
             this.btnZend.Margin = new System.Windows.Forms.Padding(2);
             this.btnZend.Name = "btnZend";
-            this.btnZend.Size = new System.Drawing.Size(922, 43);
+            this.btnZend.Size = new System.Drawing.Size(922, 42);
             this.btnZend.TabIndex = 8;
             this.btnZend.Text = "Stuur bericht naar Server";
             this.btnZend.UseVisualStyleBackColor = true;
@@ -447,6 +447,7 @@ namespace WinAppMediaPlayerClientVersie2
             this.btnStopPlay.TabIndex = 12;
             this.btnStopPlay.Text = "Stop";
             this.btnStopPlay.UseVisualStyleBackColor = true;
+            this.btnStopPlay.Click += new System.EventHandler(this.btnStopPlay_Click);
             // 
             // btnPlay
             // 
@@ -456,6 +457,7 @@ namespace WinAppMediaPlayerClientVersie2
             this.btnPlay.TabIndex = 11;
             this.btnPlay.Text = "Play";
             this.btnPlay.UseVisualStyleBackColor = true;
+            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
             // 
             // btnVerwijderPlayList
             // 
@@ -465,6 +467,7 @@ namespace WinAppMediaPlayerClientVersie2
             this.btnVerwijderPlayList.TabIndex = 10;
             this.btnVerwijderPlayList.Text = "<<";
             this.btnVerwijderPlayList.UseVisualStyleBackColor = true;
+            this.btnVerwijderPlayList.Click += new System.EventHandler(this.btnVerwijderPlayList_Click);
             // 
             // btnVoegToePlayList
             // 
@@ -474,6 +477,7 @@ namespace WinAppMediaPlayerClientVersie2
             this.btnVoegToePlayList.TabIndex = 9;
             this.btnVoegToePlayList.Text = ">>";
             this.btnVoegToePlayList.UseVisualStyleBackColor = true;
+            this.btnVoegToePlayList.Click += new System.EventHandler(this.btnVoegToePlayList_Click);
             // 
             // splitter2
             // 
@@ -531,6 +535,7 @@ namespace WinAppMediaPlayerClientVersie2
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MediaPlayer - Client";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmClientMediaPlayer_Load);
             this.pnlClient.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

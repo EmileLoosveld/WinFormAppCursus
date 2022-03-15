@@ -65,21 +65,67 @@ namespace WinAppMediaPlayerClientVersie2
                 txtMelding.AppendText("Kan geen verbinding maken!\r\n");
             }
         }
-
+        bool songlistadd = false, playlistremove = false, playlistadd = false;
         private void bgWorkerOntvang_DoWork(object sender, DoWorkEventArgs e)
         {
             while (client.Connected)
             {
                 string bericht;
+
                 try
                 {
                     bericht = Reader.ReadLine();
+                    if (bericht == "COMMANDEND")
+                    {
+                        songlistadd = false;
+                        playlistremove = false;
+                        playlistadd = false;
+                    }
+
                     if (bericht == "Disconnect") break;
                     this.txtCommunicatie.Invoke(new MethodInvoker(
                         delegate ()
                         {
                             txtCommunicatie.AppendText(bericht + "\r\n");
                         }));
+                    if (songlistadd == true)
+                    {
+                        this.txtCommunicatie.Invoke(new MethodInvoker(
+                        delegate ()
+                        {
+                            lstSong.Items.Add(bericht);
+                        }));
+                    }
+                    if (playlistremove == true)
+                    {
+                        this.txtCommunicatie.Invoke(new MethodInvoker(
+                        delegate ()
+                        {
+                            lstSongPlayList.Items.Remove(bericht);
+                        }));
+                    }
+                    if (playlistadd == true)
+                    {
+                        this.txtCommunicatie.Invoke(new MethodInvoker(
+                        delegate ()
+                        {
+                            lstSongPlayList.Items.Add(bericht);
+                        }));
+                    }
+                    if (bericht == "SONGLISTADD")
+                    {
+                        songlistadd = true;
+                    }
+                    if (bericht == "PLAYLISTADD")
+                    {
+                        playlistadd = true;
+                    }
+                    if (bericht == "PLAYLISTREMOVE")
+                    {
+                        playlistremove = true;
+                    }
+
+
                 }
                 catch
                 {
@@ -128,6 +174,54 @@ namespace WinAppMediaPlayerClientVersie2
             catch
             {
                 txtMelding.AppendText("Verbinding verbreken doro Client mislukt");
+            }
+        }
+
+        private void frmClientMediaPlayer_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnVoegToePlayList_Click(object sender, EventArgs e)
+        {
+            if (lstSong.SelectedIndex != -1)
+            {
+                lstSongPlayList.Items.Add(lstSong.SelectedItem);
+
+            }
+        }
+
+        private void btnVerwijderPlayList_Click(object sender, EventArgs e)
+        {
+            if (lstSongPlayList.SelectedIndex != -1)
+            {
+                lstSongPlayList.Items.Remove(lstSongPlayList.SelectedItem);
+            }
+        }
+
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Writer.WriteLine("PLAY");
+                txtCommunicatie.AppendText("PLAY" + "\r\n");
+            }
+            catch
+            {
+                txtMelding.AppendText("Bericht zenden mislukt");
+            }
+        }
+
+        private void btnStopPlay_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Writer.WriteLine("STOP");
+                txtCommunicatie.AppendText("STOP" + "\r\n");
+            }
+            catch
+            {
+                txtMelding.AppendText("Bericht zenden mislukt");
             }
         }
     }

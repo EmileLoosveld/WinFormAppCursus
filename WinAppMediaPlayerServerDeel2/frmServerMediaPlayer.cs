@@ -50,11 +50,11 @@ namespace WinAppMediaPlayerVersie2
         #region MediaPlayer
 
         WindowsMediaPlayer Player = new WindowsMediaPlayer();
-        
+
 
         private void btnVoegSongToe_Click(object sender, EventArgs e)
         {
-            if(ofdZoekSong.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (ofdZoekSong.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string titel = Path.GetFileNameWithoutExtension(ofdZoekSong.FileName), padsong = ofdZoekSong.FileName;
                 if (!File.Exists(padsong)) { MessageBox.Show("Dit bestand kan niet gevonden worden!"); return; }
@@ -68,14 +68,23 @@ namespace WinAppMediaPlayerVersie2
                 System.IO.File.Copy(padsong, padmap + "\\" + titel + ".mp3");
                 //toevoegen aan lijst
                 lstAlleSongs.Items.Add(titel);
-                Writer.WriteLine("SONGLISTADD");
-                foreach (string song in lstAlleSongs.Items)
-                    Writer.WriteLine(song);
+                if (client != null && client.Connected)
+                {
+                    Writer.WriteLine("SONGLISTADD");
+                    foreach (string song in lstAlleSongs.Items)
+                        Writer.WriteLine(song);
+
+                }
 
             }
         }
 
         private void btnVoegToePlayList_Click(object sender, EventArgs e)
+        {
+            PlayListVoegToe();
+        }
+
+        private void PlayListVoegToe()
         {
             if (lstAlleSongs.SelectedIndex == -1) return; //niets geselecteerd
             if (lstPlaylistSongs.Items.Contains(lstAlleSongs.SelectedItem.ToString())) { MessageBox.Show("Deze song bestaat al!"); return; }
@@ -83,28 +92,32 @@ namespace WinAppMediaPlayerVersie2
             //toevoegen aan PlayList
             string padsong = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Application.ExecutablePath), "muziek") + "\\" + lstAlleSongs.SelectedItem.ToString() + ".mp3";
             Player.currentPlaylist.appendItem(Player.newMedia(padsong));
-            Writer.WriteLine("PLAYLISTADD");
-            foreach (string playlist in lstPlaylistSongs.Items)
-                Writer.WriteLine(playlist);
+            if (client != null && client.Connected)
+            {
+                Writer.WriteLine("PLAYLISTADD");
+                Writer.WriteLine(lstAlleSongs.SelectedItem);
+                Writer.WriteLine("COMMANDEND");
+
+            }
         }
 
         private void btnVerwijderPlayList_Click(object sender, EventArgs e)
         {
-            if (lstPlaylistSongs.SelectedIndex == -1 ) return;// niets geselecteerd
+            if (lstPlaylistSongs.SelectedIndex == -1) return;// niets geselecteerd
             int selectie = lstPlaylistSongs.SelectedIndex;
             string song = lstPlaylistSongs.Items[selectie].ToString();
+            Writer.WriteLine("PLAYLISTREMOVE");
+            Writer.WriteLine(lstPlaylistSongs.SelectedItem);
+            Writer.WriteLine("COMMANDEND");
             lstPlaylistSongs.Items.RemoveAt(selectie);
             //verwijderen uit Playlist
             WMPLib.IWMPMedia listItem = Player.currentPlaylist.get_Item(selectie);
             Player.currentPlaylist.removeItem(listItem);
-            if(Player.currentPlaylist.count ==0 ) 
+            if (Player.currentPlaylist.count == 0)
             {
                 tssMediaPlayer.Text = "Mediaplayer gestopt";
                 tssMediaPlayer.ForeColor = Color.Red;
             }
-            Writer.WriteLine("PLAYLISTREMOVE");
-            foreach (string playlist in lstAlleSongs.Items)
-                Writer.WriteLine(playlist);
         }
 
         private void btnStartPlay_Click(object sender, EventArgs e)
@@ -180,6 +193,7 @@ namespace WinAppMediaPlayerVersie2
                         listener.Stop();
                     }
                     chkbStartStopServer.Text = "Start Server";
+                    chkbStartStopServer.Text = "Start Server";
                     txtMelding.AppendText("Server gestopt!\r\n");
                     tssTCPServer.Text = "TCP/IP Server gestopt";
                     tssTCPServer.ForeColor = Color.Red;
@@ -214,6 +228,18 @@ namespace WinAppMediaPlayerVersie2
                         string padsong = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Application.ExecutablePath), "muziek") + "\\" + lstAlleSongs.SelectedItem.ToString() + ".mp3";
                         Player.currentPlaylist.appendItem(Player.newMedia(padsong));
                     }
+                    if (bericht == "PLAY")
+                    {
+                        Player.controls.play();
+                        tssMediaPlayer.Text = "Mediaplayer speelt muziek";
+                        tssMediaPlayer.ForeColor = Color.Green;
+                    }
+                    if (bericht == "STOP")
+                    {
+                        Player.controls.stop();
+                        tssMediaPlayer.Text = "Mediaplayer gestopt";
+                        tssMediaPlayer.ForeColor = Color.Red;
+                    }
                 }
                 catch
                 {
@@ -223,7 +249,7 @@ namespace WinAppMediaPlayerVersie2
                             txtMelding.AppendText("Kan bericht niet ontvangen.\r\n");
                         }));
                 }
-                
+
             }
         }
 
@@ -274,9 +300,11 @@ namespace WinAppMediaPlayerVersie2
                 Writer.WriteLine("SONGLISTADD");
                 foreach (string song in lstAlleSongs.Items)
                     Writer.WriteLine(song);
-                Writer.Write("PLAYLISTADD");
+                Writer.WriteLine("COMMANDEND");
+                Writer.WriteLine("PLAYLISTADD");
                 foreach (string playlist in lstPlaylistSongs.Items)
                     Writer.Write(playlist);
+                Writer.WriteLine("COMMANDEND");
             }
         }
 
