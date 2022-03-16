@@ -45,7 +45,7 @@ namespace WinAppMediaPlayerClientVersie2
             {
                 client = new TcpClient();
                 client.Connect(ipadres, poortNr);
-                if (client.Connected)
+                if (client != null && client.Connected)
                 {
                     Writer = new StreamWriter(client.GetStream());
                     Reader = new StreamReader(client.GetStream());
@@ -68,7 +68,7 @@ namespace WinAppMediaPlayerClientVersie2
         bool songlistadd = false, playlistremove = false, playlistadd = false;
         private void bgWorkerOntvang_DoWork(object sender, DoWorkEventArgs e)
         {
-            while (client.Connected)
+            while (client != null && client.Connected)
             {
                 string bericht;
 
@@ -153,8 +153,12 @@ namespace WinAppMediaPlayerClientVersie2
         {
             try
             {
-                Writer.WriteLine("CLIENT  >>> " + txtBericht.Text);
-                txtCommunicatie.AppendText("CLIENT  >>> " + txtBericht.Text + "\r\n");
+                if (client != null && client.Connected)
+                {
+                    Writer.WriteLine("CLIENT  >>> " + txtBericht.Text);
+                    txtCommunicatie.AppendText("CLIENT  >>> " + txtBericht.Text + "\r\n");
+
+                }
             }
             catch
             {
@@ -186,8 +190,30 @@ namespace WinAppMediaPlayerClientVersie2
         {
             if (lstSong.SelectedIndex != -1)
             {
-                lstSongPlayList.Items.Add(lstSong.SelectedItem);
+                if (lstSongPlayList.Items.Contains(lstSong.SelectedItem))
+                {
 
+                }
+                else
+                {
+                    lstSongPlayList.Items.Add(lstSong.SelectedItem);
+
+                }
+
+                try
+                {
+                    if (client != null && client.Connected)
+                    {
+                        Writer.WriteLine("PLAYLISTADD");
+                        Writer.WriteLine(lstSong.SelectedItem);
+                        Writer.WriteLine("COMMANDEND");
+
+                    }
+                }
+                catch
+                {
+                    txtMelding.AppendText("Bericht zenden mislukt");
+                }
             }
         }
 
@@ -195,7 +221,22 @@ namespace WinAppMediaPlayerClientVersie2
         {
             if (lstSongPlayList.SelectedIndex != -1)
             {
-                lstSongPlayList.Items.Remove(lstSongPlayList.SelectedItem);
+
+                try
+                {
+                    if (client != null && client.Connected)
+                    {
+
+                        Writer.WriteLine("PLAYLISTREMOVE");
+                        Writer.WriteLine(lstSongPlayList.SelectedItem);
+                        Writer.WriteLine("COMMANDEND");
+                        lstSongPlayList.Items.Remove(lstSongPlayList.SelectedItem);
+                    }
+                }
+                catch
+                {
+                    txtMelding.AppendText("Bericht zenden mislukt");
+                }
             }
         }
 
@@ -203,8 +244,12 @@ namespace WinAppMediaPlayerClientVersie2
         {
             try
             {
-                Writer.WriteLine("PLAY");
-                txtCommunicatie.AppendText("PLAY" + "\r\n");
+                if (client != null && client.Connected)
+                {
+                    Writer.WriteLine("PLAY");
+                    txtCommunicatie.AppendText("PLAY" + "\r\n");
+
+                }
             }
             catch
             {
@@ -216,8 +261,11 @@ namespace WinAppMediaPlayerClientVersie2
         {
             try
             {
-                Writer.WriteLine("STOP");
-                txtCommunicatie.AppendText("STOP" + "\r\n");
+                if (client != null && client.Connected)
+                {
+                    Writer.WriteLine("STOP");
+                    txtCommunicatie.AppendText("STOP" + "\r\n");
+                }
             }
             catch
             {

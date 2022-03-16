@@ -71,8 +71,8 @@ namespace WinAppMediaPlayerVersie2
                 if (client != null && client.Connected)
                 {
                     Writer.WriteLine("SONGLISTADD");
-                    foreach (string song in lstAlleSongs.Items)
-                        Writer.WriteLine(song);
+                    Writer.WriteLine(titel);
+                    Writer.WriteLine("COMMANDEND");
 
                 }
 
@@ -106,9 +106,13 @@ namespace WinAppMediaPlayerVersie2
             if (lstPlaylistSongs.SelectedIndex == -1) return;// niets geselecteerd
             int selectie = lstPlaylistSongs.SelectedIndex;
             string song = lstPlaylistSongs.Items[selectie].ToString();
-            Writer.WriteLine("PLAYLISTREMOVE");
-            Writer.WriteLine(lstPlaylistSongs.SelectedItem);
-            Writer.WriteLine("COMMANDEND");
+            if (client != null && client.Connected)
+            {
+                Writer.WriteLine("PLAYLISTREMOVE");
+                Writer.WriteLine(lstPlaylistSongs.SelectedItem);
+                Writer.WriteLine("COMMANDEND");
+
+            }
             lstPlaylistSongs.Items.RemoveAt(selectie);
             //verwijderen uit Playlist
             WMPLib.IWMPMedia listItem = Player.currentPlaylist.get_Item(selectie);
@@ -122,9 +126,13 @@ namespace WinAppMediaPlayerVersie2
 
         private void btnStartPlay_Click(object sender, EventArgs e)
         {
-            Player.controls.play();
-            tssMediaPlayer.Text = "Mediaplayer speelt muziek";
-            tssMediaPlayer.ForeColor = Color.Green;
+            if (Player.currentPlaylist.count != 0)
+            {
+                Player.controls.play();
+                tssMediaPlayer.Text = "Mediaplayer speelt muziek";
+                tssMediaPlayer.ForeColor = Color.Green;
+
+            }
         }
 
         private void btnStopPlay_Click(object sender, EventArgs e)
@@ -204,7 +212,7 @@ namespace WinAppMediaPlayerVersie2
                 }
             }
         }
-
+        bool playlisttoevoegen = false, playlistremove = false;
         private void bgWorkerOntvang_DoWork(object sender, DoWorkEventArgs e)
         {
             while (client.Connected)
@@ -219,20 +227,76 @@ namespace WinAppMediaPlayerVersie2
                         {
                             txtOntvang.AppendText(bericht + "\r\n");
                         }));
-                    if (bericht.Contains("PLAYLISTADD"))
+                    //if (bericht.Contains("PLAYLISTADD"))
+                    //{
+                    //    List<string> listStrLineElements = bericht.Split(',').ToList();
+                    //    if (lstPlaylistSongs.Items.Contains(lstAlleSongs.SelectedItem.ToString())) { MessageBox.Show("Deze song bestaat al!"); return; }
+                    //    lstPlaylistSongs.Items.Add(lstAlleSongs.SelectedItem);
+                    //    //toevoegen aan PlayList
+                    //    string padsong = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Application.ExecutablePath), "muziek") + "\\" + lstAlleSongs.SelectedItem.ToString() + ".mp3";
+                    //    Player.currentPlaylist.appendItem(Player.newMedia(padsong));
+                    //}
+                    if (bericht == "COMMANDEND")
                     {
-                        List<string> listStrLineElements = bericht.Split(',').ToList();
-                        if (lstPlaylistSongs.Items.Contains(lstAlleSongs.SelectedItem.ToString())) { MessageBox.Show("Deze song bestaat al!"); return; }
-                        lstPlaylistSongs.Items.Add(lstAlleSongs.SelectedItem);
-                        //toevoegen aan PlayList
-                        string padsong = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Application.ExecutablePath), "muziek") + "\\" + lstAlleSongs.SelectedItem.ToString() + ".mp3";
-                        Player.currentPlaylist.appendItem(Player.newMedia(padsong));
+                        playlisttoevoegen = false;
+                        playlistremove = false;
                     }
+                    if (playlisttoevoegen == true)
+                    {
+                        this.txtOntvang.Invoke(new MethodInvoker(
+                        delegate ()
+                        {
+                            if (lstPlaylistSongs.Items.Contains(bericht))
+                            {
+                                MessageBox.Show("Deze song staat al in de lijst!");
+                            }
+                            else
+                            {
+                                lstPlaylistSongs.Items.Add(bericht);
+                                //toevoegen aan PlayList
+                                string padsong = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Application.ExecutablePath), "muziek") + "\\" + bericht + ".mp3";
+                                Player.currentPlaylist.appendItem(Player.newMedia(padsong));
+
+                            }
+                        }));
+
+                    }
+                    if (playlistremove == true)
+                    {
+                        this.txtOntvang.Invoke(new MethodInvoker(
+                        delegate ()
+                        {
+                            lstPlaylistSongs.Items.Remove(bericht);
+                            int indexoff = lstPlaylistSongs.Items.IndexOf(bericht);
+                            //verwijderen uit Playlist
+                            WMPLib.IWMPMedia listItem = Player.currentPlaylist.get_Item(indexoff);
+                            Player.currentPlaylist.removeItem(listItem);
+                            if (Player.currentPlaylist.count == 0)
+                            {
+                                tssMediaPlayer.Text = "Mediaplayer gestopt";
+                                tssMediaPlayer.ForeColor = Color.Red;
+                            }
+                        }));
+
+                    }
+                    if (bericht == "PLAYLISTADD")
+                    {
+                        playlisttoevoegen = true;
+                    }
+                    if (bericht == "PLAYLISTREMOVE")
+                    {
+                        playlistremove = true;
+                    }
+
                     if (bericht == "PLAY")
                     {
-                        Player.controls.play();
-                        tssMediaPlayer.Text = "Mediaplayer speelt muziek";
-                        tssMediaPlayer.ForeColor = Color.Green;
+                        if (Player.currentPlaylist.count != 0)
+                        {
+
+                            Player.controls.play();
+                            tssMediaPlayer.Text = "Mediaplayer speelt muziek";
+                            tssMediaPlayer.ForeColor = Color.Green;
+                        }
                     }
                     if (bericht == "STOP")
                     {
