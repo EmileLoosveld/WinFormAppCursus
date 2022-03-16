@@ -266,7 +266,6 @@ namespace WinAppMediaPlayerVersie2
                         this.txtOntvang.Invoke(new MethodInvoker(
                         delegate ()
                         {
-                            lstPlaylistSongs.Items.Remove(bericht);
                             int indexoff = lstPlaylistSongs.Items.IndexOf(bericht);
                             //verwijderen uit Playlist
                             WMPLib.IWMPMedia listItem = Player.currentPlaylist.get_Item(indexoff);
@@ -276,6 +275,7 @@ namespace WinAppMediaPlayerVersie2
                                 tssMediaPlayer.Text = "Mediaplayer gestopt";
                                 tssMediaPlayer.ForeColor = Color.Red;
                             }
+                            lstPlaylistSongs.Items.Remove(bericht);
                         }));
 
                     }
