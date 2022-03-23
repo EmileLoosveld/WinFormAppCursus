@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinAppMediaPlayerClientVers
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinAppMediaPlayerServerDeel2", "WinAppMediaPlayerServerDeel2\WinAppMediaPlayerServerDeel2.csproj", "{34516BEF-4334-49B9-969A-0F76A0E68C23}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsAppPersoneelDBVoorbeeld", "WinFormsAppPersoneelDBVoorbeeld\WinFormsAppPersoneelDBVoorbeeld.csproj", "{30B8C289-82A9-4947-862C-5195AD84977A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -181,6 +183,14 @@ Global
 		{34516BEF-4334-49B9-969A-0F76A0E68C23}.Release|Any CPU.Build.0 = Release|Any CPU
 		{34516BEF-4334-49B9-969A-0F76A0E68C23}.Release|x86.ActiveCfg = Release|Any CPU
 		{34516BEF-4334-49B9-969A-0F76A0E68C23}.Release|x86.Build.0 = Release|Any CPU
+		{30B8C289-82A9-4947-862C-5195AD84977A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30B8C289-82A9-4947-862C-5195AD84977A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30B8C289-82A9-4947-862C-5195AD84977A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{30B8C289-82A9-4947-862C-5195AD84977A}.Debug|x86.Build.0 = Debug|Any CPU
+		{30B8C289-82A9-4947-862C-5195AD84977A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30B8C289-82A9-4947-862C-5195AD84977A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30B8C289-82A9-4947-862C-5195AD84977A}.Release|x86.ActiveCfg = Release|Any CPU
+		{30B8C289-82A9-4947-862C-5195AD84977A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
