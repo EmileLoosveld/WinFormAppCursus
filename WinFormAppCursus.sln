@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinAppMediaPlayerServerDeel
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsAppPersoneelDBVoorbeeld", "WinFormsAppPersoneelDBVoorbeeld\WinFormsAppPersoneelDBVoorbeeld.csproj", "{30B8C289-82A9-4947-862C-5195AD84977A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamenPasen", "ExamenPasen\ExamenPasen.csproj", "{13E2EB08-1A01-4859-9AD6-9353471865B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -191,6 +193,14 @@ Global
 		{30B8C289-82A9-4947-862C-5195AD84977A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{30B8C289-82A9-4947-862C-5195AD84977A}.Release|x86.ActiveCfg = Release|Any CPU
 		{30B8C289-82A9-4947-862C-5195AD84977A}.Release|x86.Build.0 = Release|Any CPU
+		{13E2EB08-1A01-4859-9AD6-9353471865B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13E2EB08-1A01-4859-9AD6-9353471865B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13E2EB08-1A01-4859-9AD6-9353471865B9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{13E2EB08-1A01-4859-9AD6-9353471865B9}.Debug|x86.Build.0 = Debug|Any CPU
+		{13E2EB08-1A01-4859-9AD6-9353471865B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13E2EB08-1A01-4859-9AD6-9353471865B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13E2EB08-1A01-4859-9AD6-9353471865B9}.Release|x86.ActiveCfg = Release|Any CPU
+		{13E2EB08-1A01-4859-9AD6-9353471865B9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
