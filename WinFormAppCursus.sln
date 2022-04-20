@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsAppPersoneelDBVoorb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamenPasen", "ExamenPasen\ExamenPasen.csproj", "{13E2EB08-1A01-4859-9AD6-9353471865B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opdracht database", "Opdracht database\Opdracht database.csproj", "{C0E37699-1B30-404B-B9D1-A22F325D6068}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -201,6 +203,14 @@ Global
 		{13E2EB08-1A01-4859-9AD6-9353471865B9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{13E2EB08-1A01-4859-9AD6-9353471865B9}.Release|x86.ActiveCfg = Release|Any CPU
 		{13E2EB08-1A01-4859-9AD6-9353471865B9}.Release|x86.Build.0 = Release|Any CPU
+		{C0E37699-1B30-404B-B9D1-A22F325D6068}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0E37699-1B30-404B-B9D1-A22F325D6068}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0E37699-1B30-404B-B9D1-A22F325D6068}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C0E37699-1B30-404B-B9D1-A22F325D6068}.Debug|x86.Build.0 = Debug|Any CPU
+		{C0E37699-1B30-404B-B9D1-A22F325D6068}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0E37699-1B30-404B-B9D1-A22F325D6068}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0E37699-1B30-404B-B9D1-A22F325D6068}.Release|x86.ActiveCfg = Release|Any CPU
+		{C0E37699-1B30-404B-B9D1-A22F325D6068}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
