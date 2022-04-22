@@ -29,6 +29,11 @@ namespace Opdracht_database
         {
             // TODO: This line of code loads data into the 'projectenDataSet.Table' table. You can move, or remove it, as needed.
             this.tableTableAdapter.Fill(this.projectenDataSet.Table);
+            foreach(DataRow rij in this.projectenDataSet.Table )
+            {
+                if (!projectComboBox.Items.Contains(rij["Project"].ToString()))
+                    projectComboBox.Items.Add( rij["Project"].ToString());
+            }
 
         }
 
@@ -37,9 +42,27 @@ namespace Opdracht_database
 
         }
 
-        private void projectComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void projectComboBox_TextChanged(object sender, EventArgs e)
         {
-            this.tableTableAdapter.FillBy(this.projectenDataSet.Table, projectComboBox.Text);
+            if (projectComboBox.SelectedIndex != -1)
+            {
+                this.tableTableAdapter.FillBy(this.projectenDataSet.Table, projectComboBox.Text);
+                tableDataGridView.Visible = true;
+                tableBindingNavigator.Enabled = true;
+            }
+            else
+            {
+                tableDataGridView.Visible = false;
+                tableBindingNavigator.Enabled = false;
+            }
+            if (projectenDataSet.Table.Count < 1)           //Kijken hoeveel rijen aanwezig
+            {
+                btnAfspelen.Enabled = false;
+            }
+            else
+            {
+                btnAfspelen.Enabled = true;
+            }
         }
     }
 }

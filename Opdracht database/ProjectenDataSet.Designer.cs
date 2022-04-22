@@ -895,8 +895,9 @@ SELECT StuurID, Project, Stap, Tijd, stuur FROM [Table] WHERE (StuurID = @StuurI
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "SELECT        StuurID, Project, Stap, Tijd, stuur\r\nFROM            [Table]\r\nWHERE" +
-                "        (\'Naam\' LIKE \'% + @naam + %\')\r\nORDER BY Project";
+                "        (Project = @project)\r\nORDER BY Project";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@project", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Project", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -927,8 +928,14 @@ SELECT StuurID, Project, Stap, Tijd, stuur FROM [Table] WHERE (StuurID = @StuurI
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy(ProjectenDataSet.TableDataTable dataTable) {
+        public virtual int FillBy(ProjectenDataSet.TableDataTable dataTable, string project) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((project == null)) {
+                throw new global::System.ArgumentNullException("project");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(project));
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -940,8 +947,14 @@ SELECT StuurID, Project, Stap, Tijd, stuur FROM [Table] WHERE (StuurID = @StuurI
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual ProjectenDataSet.TableDataTable GetDataBy() {
+        public virtual ProjectenDataSet.TableDataTable GetDataBy(string project) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((project == null)) {
+                throw new global::System.ArgumentNullException("project");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(project));
+            }
             ProjectenDataSet.TableDataTable dataTable = new ProjectenDataSet.TableDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
