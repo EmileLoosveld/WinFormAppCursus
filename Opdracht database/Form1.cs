@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibK8055;
 
 namespace Opdracht_database
 {
@@ -34,7 +35,8 @@ namespace Opdracht_database
                 if (!projectComboBox.Items.Contains(rij["Project"].ToString()))
                     projectComboBox.Items.Add( rij["Project"].ToString());
             }
-
+            K8055.OpenDevice(0);
+            K8055.ClearAllDigital();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -63,6 +65,27 @@ namespace Opdracht_database
             {
                 btnAfspelen.Enabled = true;
             }
+        }
+        bool tijdVerlopen = false;
+        private void btnAfspelen_Click(object sender, EventArgs e)
+        {
+            foreach (DataRow rij in this.projectenDataSet.Table)
+            {
+                if (tijdVerlopen == false)
+                {
+                    K8055.WriteAllDigital(Convert.ToInt32(rij["stuur"].ToString(), 2));
+                    timer1.Interval = (int)rij["Tijd"] * 1000;
+                    timer1.Enabled = true;
+                    tijdVerlopen = true;
+                }
+                
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Enabled = false;
+            tijdVerlopen = false;
         }
     }
 }

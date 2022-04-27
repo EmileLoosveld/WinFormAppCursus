@@ -48,9 +48,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LibK8055, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\LibK8055.dll</HintPath>
+    <Reference Include="LibK8055">
+      <HintPath>..\..\..\..\..\Downloads\LibK8055.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

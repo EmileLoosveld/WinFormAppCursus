@@ -59,6 +59,7 @@ namespace Opdracht_database
             this.btnAfspelen = new System.Windows.Forms.Button();
             this.projectComboBox = new System.Windows.Forms.ComboBox();
             this.projectenDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             projectLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.projectenDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
@@ -295,6 +296,7 @@ namespace Opdracht_database
             this.btnAfspelen.TabIndex = 3;
             this.btnAfspelen.Text = "Afspelen";
             this.btnAfspelen.UseVisualStyleBackColor = true;
+            this.btnAfspelen.Click += new System.EventHandler(this.btnAfspelen_Click);
             // 
             // projectComboBox
             // 
@@ -309,6 +311,10 @@ namespace Opdracht_database
             // 
             this.projectenDataSetBindingSource.DataSource = this.projectenDataSet;
             this.projectenDataSetBindingSource.Position = 0;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
@@ -364,6 +370,7 @@ namespace Opdracht_database
         private System.Windows.Forms.DataGridViewTextBoxColumn stuurDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource projectenDataSetBindingSource;
         private System.Windows.Forms.Button btnAfspelen;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
