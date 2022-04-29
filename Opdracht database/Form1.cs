@@ -20,28 +20,37 @@ namespace Opdracht_database
 
         private void tableBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            this.Validate();
-            this.tableBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.projectenDataSet);
+            try
+            {
+                this.Validate();
+                this.tableBindingSource.EndEdit();
+                this.tableAdapterManager.UpdateAll(this.projectenDataSet);
+                comboBoxLaden();
+                this.tableTableAdapter.FillBy(this.projectenDataSet.Table, projectComboBox.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
+        private void comboBoxLaden()
+        {
+            projectComboBox.Items.Clear();
+            this.tableTableAdapter.Fill(this.projectenDataSet.Table);
+            foreach (DataRow rij in this.projectenDataSet.Table)
+            {
+                if (!projectComboBox.Items.Contains(rij["Project"].ToString()))
+                    projectComboBox.Items.Add(rij["Project"].ToString());
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'projectenDataSet.Table' table. You can move, or remove it, as needed.
-            this.tableTableAdapter.Fill(this.projectenDataSet.Table);
-            foreach(DataRow rij in this.projectenDataSet.Table )
-            {
-                if (!projectComboBox.Items.Contains(rij["Project"].ToString()))
-                    projectComboBox.Items.Add( rij["Project"].ToString());
-            }
+            comboBoxLaden();
             K8055.OpenDevice(0);
             K8055.ClearAllDigital();
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void projectComboBox_TextChanged(object sender, EventArgs e)
@@ -66,26 +75,33 @@ namespace Opdracht_database
                 btnAfspelen.Enabled = true;
             }
         }
-        bool tijdVerlopen = false;
+        bool tijdVerlopen = false;int tel = 0;
         private void btnAfspelen_Click(object sender, EventArgs e)
         {
-            foreach (DataRow rij in this.projectenDataSet.Table)
+            tel = 0;
+            timer1.Start();
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            DataRow rij = this.projectenDataSet.Table[tel];
+            K8055.WriteAllDigital(Convert.ToInt32(rij["stuur"].ToString(), 2));
+            timer1.Interval = (int)rij["Tijd"] * 1000;
+            if (this.projectenDataSet.Table.Count == tel)
             {
-                if (tijdVerlopen == false)
-                {
-                    K8055.WriteAllDigital(Convert.ToInt32(rij["stuur"].ToString(), 2));
-                    timer1.Interval = (int)rij["Tijd"] * 1000;
-                    timer1.Enabled = true;
-                    tijdVerlopen = true;
-                }
-                
+                timer1.Stop();
+            }
+            else
+            {
+                tel++;
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void tableDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            timer1.Enabled = false;
-            tijdVerlopen = false;
+            if (e.ColumnIndex == 1)
+            {
+                tableDataGridView.CurrentCell.Value = projectComboBox.Text;
+            }
         }
     }
 }

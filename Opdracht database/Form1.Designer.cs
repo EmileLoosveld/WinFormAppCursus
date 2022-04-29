@@ -244,6 +244,7 @@ namespace Opdracht_database
             this.tableDataGridView.Size = new System.Drawing.Size(800, 364);
             this.tableDataGridView.TabIndex = 1;
             this.tableDataGridView.Visible = false;
+            this.tableDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableDataGridView_CellClick);
             // 
             // stuurIDDataGridViewTextBoxColumn
             // 
