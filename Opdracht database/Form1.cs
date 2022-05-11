@@ -75,7 +75,7 @@ namespace Opdracht_database
                 btnAfspelen.Enabled = true;
             }
         }
-        bool tijdVerlopen = false;int tel = 0;
+        int tel = 0;
         private void btnAfspelen_Click(object sender, EventArgs e)
         {
             tel = 0;
@@ -83,17 +83,21 @@ namespace Opdracht_database
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            DataRow rij = this.projectenDataSet.Table[tel];
-            K8055.WriteAllDigital(Convert.ToInt32(rij["stuur"].ToString(), 2));
-            timer1.Interval = (int)rij["Tijd"] * 1000;
-            if (this.projectenDataSet.Table.Count == tel)
+            
+            if (this.projectenDataSet.Table.Rows.Count == tel)
             {
+                K8055.ClearAllDigital();
                 timer1.Stop();
             }
             else
             {
+                
+                DataRow rij = this.projectenDataSet.Table[tel];
+                K8055.WriteAllDigital(Convert.ToInt32(rij["stuur"].ToString(), 2));
+                timer1.Interval = (int)rij["Tijd"] * 1000;
                 tel++;
             }
+            
         }
 
         private void tableDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -102,6 +106,11 @@ namespace Opdracht_database
             {
                 tableDataGridView.CurrentCell.Value = projectComboBox.Text;
             }
+        }
+
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
