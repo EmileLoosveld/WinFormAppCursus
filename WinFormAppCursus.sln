@@ -31,10 +31,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsAppTCPIPServer", "W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsAppTCPIPClient", "WinFormsAppTCPIPClient\WinFormsAppTCPIPClient\WinFormsAppTCPIPClient.csproj", "{C1645AA4-2BD7-413D-94ED-AB504482883E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinAppMediaPlayerVersie2", "WinAppMediaPlayerVersie2\WinAppMediaPlayerVersie2.csproj", "{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinAppMediaPlayerClientVersie2", "WinAppMediaPlayerClientDeel2\WinAppMediaPlayerClientVersie2.csproj", "{0B44FCDB-FE95-453A-8A4C-C4BA95568985}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinAppMediaPlayerServerDeel2", "WinAppMediaPlayerServerDeel2\WinAppMediaPlayerServerDeel2.csproj", "{34516BEF-4334-49B9-969A-0F76A0E68C23}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsAppPersoneelDBVoorbeeld", "WinFormsAppPersoneelDBVoorbeeld\WinFormsAppPersoneelDBVoorbeeld.csproj", "{30B8C289-82A9-4947-862C-5195AD84977A}"
@@ -42,6 +38,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamenPasen", "ExamenPasen\ExamenPasen.csproj", "{13E2EB08-1A01-4859-9AD6-9353471865B9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opdracht database", "Opdracht database\Opdracht database.csproj", "{C0E37699-1B30-404B-B9D1-A22F325D6068}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinAppMediaPlayerClientVersie2", "WinAppMediaPlayerClientVersie2\WinAppMediaPlayerClientVersie2.csproj", "{0B44FCDB-FE95-453A-8A4C-C4BA95568985}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinAppMediaPlayerVersie2", "WinAppMediaPlayerVersie2\WinAppMediaPlayerVersie2.csproj", "{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -163,22 +163,6 @@ Global
 		{C1645AA4-2BD7-413D-94ED-AB504482883E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C1645AA4-2BD7-413D-94ED-AB504482883E}.Release|x86.ActiveCfg = Release|Any CPU
 		{C1645AA4-2BD7-413D-94ED-AB504482883E}.Release|x86.Build.0 = Release|Any CPU
-		{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}.Debug|x86.Build.0 = Debug|Any CPU
-		{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}.Release|x86.ActiveCfg = Release|Any CPU
-		{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}.Release|x86.Build.0 = Release|Any CPU
-		{0B44FCDB-FE95-453A-8A4C-C4BA95568985}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B44FCDB-FE95-453A-8A4C-C4BA95568985}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B44FCDB-FE95-453A-8A4C-C4BA95568985}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{0B44FCDB-FE95-453A-8A4C-C4BA95568985}.Debug|x86.Build.0 = Debug|Any CPU
-		{0B44FCDB-FE95-453A-8A4C-C4BA95568985}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B44FCDB-FE95-453A-8A4C-C4BA95568985}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0B44FCDB-FE95-453A-8A4C-C4BA95568985}.Release|x86.ActiveCfg = Release|Any CPU
-		{0B44FCDB-FE95-453A-8A4C-C4BA95568985}.Release|x86.Build.0 = Release|Any CPU
 		{34516BEF-4334-49B9-969A-0F76A0E68C23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{34516BEF-4334-49B9-969A-0F76A0E68C23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34516BEF-4334-49B9-969A-0F76A0E68C23}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -211,6 +195,22 @@ Global
 		{C0E37699-1B30-404B-B9D1-A22F325D6068}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C0E37699-1B30-404B-B9D1-A22F325D6068}.Release|x86.ActiveCfg = Release|Any CPU
 		{C0E37699-1B30-404B-B9D1-A22F325D6068}.Release|x86.Build.0 = Release|Any CPU
+		{0B44FCDB-FE95-453A-8A4C-C4BA95568985}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B44FCDB-FE95-453A-8A4C-C4BA95568985}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B44FCDB-FE95-453A-8A4C-C4BA95568985}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0B44FCDB-FE95-453A-8A4C-C4BA95568985}.Debug|x86.Build.0 = Debug|Any CPU
+		{0B44FCDB-FE95-453A-8A4C-C4BA95568985}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B44FCDB-FE95-453A-8A4C-C4BA95568985}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B44FCDB-FE95-453A-8A4C-C4BA95568985}.Release|x86.ActiveCfg = Release|Any CPU
+		{0B44FCDB-FE95-453A-8A4C-C4BA95568985}.Release|x86.Build.0 = Release|Any CPU
+		{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}.Debug|x86.Build.0 = Debug|Any CPU
+		{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}.Release|x86.ActiveCfg = Release|Any CPU
+		{2B2C6BB9-70AC-4778-B67B-C53FB6C7468E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
