@@ -55,7 +55,9 @@ namespace Opdracht_database
 
         private void projectComboBox_TextChanged(object sender, EventArgs e)
         {
-            if (projectComboBox.SelectedIndex != -1)
+            timer1.Stop();
+            K8055.ClearAllDigital();
+            if (projectComboBox.Text != "")
             {
                 this.tableTableAdapter.FillBy(this.projectenDataSet.Table, projectComboBox.Text);
                 tableDataGridView.Visible = true;

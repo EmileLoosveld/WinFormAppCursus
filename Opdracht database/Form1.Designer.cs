@@ -126,7 +126,7 @@ namespace Opdracht_database
             this.tableBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.tableBindingNavigator.Name = "tableBindingNavigator";
             this.tableBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.tableBindingNavigator.Size = new System.Drawing.Size(800, 25);
+            this.tableBindingNavigator.Size = new System.Drawing.Size(652, 25);
             this.tableBindingNavigator.TabIndex = 0;
             this.tableBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -242,7 +242,7 @@ namespace Opdracht_database
             this.tableDataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableDataGridView.Location = new System.Drawing.Point(0, 122);
             this.tableDataGridView.Name = "tableDataGridView";
-            this.tableDataGridView.Size = new System.Drawing.Size(800, 364);
+            this.tableDataGridView.Size = new System.Drawing.Size(652, 364);
             this.tableDataGridView.TabIndex = 1;
             this.tableDataGridView.Visible = false;
             this.tableDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableDataGridView_CellClick);
@@ -286,7 +286,7 @@ namespace Opdracht_database
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 25);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 97);
+            this.panel1.Size = new System.Drawing.Size(652, 97);
             this.panel1.TabIndex = 2;
             // 
             // btnAfspelen
@@ -322,7 +322,7 @@ namespace Opdracht_database
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 486);
+            this.ClientSize = new System.Drawing.Size(652, 486);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tableDataGridView);
             this.Controls.Add(this.tableBindingNavigator);
