@@ -30,6 +30,8 @@ namespace WinAppMediaPlayerVersie2
 
         private void frmServerMediaPlayer_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dataMediaPlayerDataSet.PlayList' table. You can move, or remove it, as needed.
+            this.playListTableAdapter.Fill(this.dataMediaPlayerDataSet.PlayList);
             //huidige muziek laden
             string pad = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Application.ExecutablePath), "Muziek");
             if (!System.IO.Directory.Exists(pad))
@@ -47,6 +49,7 @@ namespace WinAppMediaPlayerVersie2
             }
             //afspeellijst aanmaken
             Player.currentPlaylist = Player.newPlaylist("Klas", "");
+            comboBoxLaden();
         }
         #region MediaPlayer
 
@@ -60,7 +63,7 @@ namespace WinAppMediaPlayerVersie2
                 string titel = Path.GetFileNameWithoutExtension(ofdZoekSong.FileName), padsong = ofdZoekSong.FileName;
                 if (!File.Exists(padsong)) { MessageBox.Show("Dit bestand kan niet gevonden worden!"); return; }
                 if (lstAlleSongs.Items.Contains(titel)) { MessageBox.Show("Deze song staat al in de lijst!"); return; }
-                string padmap = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Application.ExecutablePath), "muziek");
+                string padmap = Path.Combine(System.IO.Path.GetDirectoryName(Application.ExecutablePath), "muziek");
                 if (!System.IO.Directory.Exists(padmap))
                 {
                     System.IO.Directory.CreateDirectory(padmap);
@@ -311,8 +314,72 @@ namespace WinAppMediaPlayerVersie2
                 txtMelding.AppendText("Berichten zenden mislukt\r\n");
             }
         }
+
+        #endregion
+        #region Database
+        private void comboBoxLaden()
+        {
+            cmbPlayList.Items.Clear();
+            this.playListTableAdapter.Fill(this.dataMediaPlayerDataSet.PlayList);
+            foreach (DataRow rij in this.dataMediaPlayerDataSet.PlayList)
+            {
+                if (!cmbPlayList.Items.Contains(rij["PlayListNaam"].ToString()))
+                    cmbPlayList.Items.Add(rij["PlayListNaam"].ToString());
+            }
+        }
+        private void cmbPlayList_TextChanged(object sender, EventArgs e)
+        {
+            if (cmbPlayList.Text != "")
+            {
+                this.playListTableAdapter.FillByPlayListNaam(this.dataMediaPlayerDataSet.PlayList, cmbPlayList.Text);
+                playListDataGridView.Visible = true;
+                playListDataGridView.Enabled = true;
+            }
+            else
+            {
+                playListDataGridView.Visible = false;
+                playListBindingNavigator.Enabled = false;
+            }
+        }
+        private void btnVoegSongsToeAanDatabase_Click(object sender, EventArgs e)
+        {
+            if (!(cmbPlayList.Text == String.Empty))
+            {
+                foreach (string playlistSong in lstPlaylistSongs.Items)
+                {
+                    this.playListTableAdapter.InsertQuery(cmbPlayList.Text, playlistSong.ToString(), Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "muziek") + "\\" + playlistSong.ToString() + ".mp3");
+                }
+                comboBoxLaden();
+                this.playListTableAdapter.FillByPlayListNaam(this.dataMediaPlayerDataSet.PlayList, cmbPlayList.Text);
+
+            }
+            else
+            {
+                MessageBox.Show("Vul een naam in in de combobox!");
+            }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            lstPlaylistSongs.Items.Clear();
+
+        }
         #endregion
 
+        private void playListBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.playListBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.dataMediaPlayerDataSet);
+
+        }
+
        
+
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }

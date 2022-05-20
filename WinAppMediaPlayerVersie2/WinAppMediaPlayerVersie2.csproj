@@ -132,10 +132,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DataMediaPlayer.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DataMediaPlayer_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>DataMediaPlayer.mdf</DependentUpon>
     </Content>
   </ItemGroup>
