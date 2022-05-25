@@ -73,6 +73,12 @@ namespace WinAppMediaPlayerVersie2
             this.tabPlaylist = new System.Windows.Forms.TabPage();
             this.pnlDatabase = new System.Windows.Forms.Panel();
             this.playListDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.playListBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataMediaPlayerDataSet = new WinAppMediaPlayerVersie2.DataMediaPlayerDataSet();
             this.pnlDatabaseKnoppen = new System.Windows.Forms.Panel();
             this.btnLadenPlayListUitDatabase = new System.Windows.Forms.Button();
             this.btnVoegSongsToeAanDatabase = new System.Windows.Forms.Button();
@@ -94,14 +100,8 @@ namespace WinAppMediaPlayerVersie2
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.playListBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
-            this.playListBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataMediaPlayerDataSet = new WinAppMediaPlayerVersie2.DataMediaPlayerDataSet();
             this.playListTableAdapter = new WinAppMediaPlayerVersie2.DataMediaPlayerDataSetTableAdapters.PlayListTableAdapter();
             this.tableAdapterManager = new WinAppMediaPlayerVersie2.DataMediaPlayerDataSetTableAdapters.TableAdapterManager();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabMediaPlayer.SuspendLayout();
@@ -121,11 +121,11 @@ namespace WinAppMediaPlayerVersie2
             this.tabPlaylist.SuspendLayout();
             this.pnlDatabase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.playListDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playListBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataMediaPlayerDataSet)).BeginInit();
             this.pnlDatabaseKnoppen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.playListBindingNavigator)).BeginInit();
             this.playListBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.playListBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataMediaPlayerDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -619,6 +619,45 @@ namespace WinAppMediaPlayerVersie2
             this.playListDataGridView.TabIndex = 0;
             this.playListDataGridView.Visible = false;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "PlayListNaam";
+            this.dataGridViewTextBoxColumn2.HeaderText = "PlayListNaam";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Song";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Song";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Pad";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Pad";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Visible = false;
+            // 
+            // playListBindingSource
+            // 
+            this.playListBindingSource.DataMember = "PlayList";
+            this.playListBindingSource.DataSource = this.dataMediaPlayerDataSet;
+            // 
+            // dataMediaPlayerDataSet
+            // 
+            this.dataMediaPlayerDataSet.DataSetName = "DataMediaPlayerDataSet";
+            this.dataMediaPlayerDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // pnlDatabaseKnoppen
             // 
             this.pnlDatabaseKnoppen.Controls.Add(this.btnLadenPlayListUitDatabase);
@@ -743,6 +782,7 @@ namespace WinAppMediaPlayerVersie2
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorDeleteItem.Text = "Delete";
+            this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -814,16 +854,6 @@ namespace WinAppMediaPlayerVersie2
             this.playListBindingNavigatorSaveItem.Text = "Save Data";
             this.playListBindingNavigatorSaveItem.Click += new System.EventHandler(this.playListBindingNavigatorSaveItem_Click);
             // 
-            // playListBindingSource
-            // 
-            this.playListBindingSource.DataMember = "PlayList";
-            this.playListBindingSource.DataSource = this.dataMediaPlayerDataSet;
-            // 
-            // dataMediaPlayerDataSet
-            // 
-            this.dataMediaPlayerDataSet.DataSetName = "DataMediaPlayerDataSet";
-            this.dataMediaPlayerDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // playListTableAdapter
             // 
             this.playListTableAdapter.ClearBeforeFill = true;
@@ -833,35 +863,6 @@ namespace WinAppMediaPlayerVersie2
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.PlayListTableAdapter = this.playListTableAdapter;
             this.tableAdapterManager.UpdateOrder = WinAppMediaPlayerVersie2.DataMediaPlayerDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "PlayListNaam";
-            this.dataGridViewTextBoxColumn2.HeaderText = "PlayListNaam";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Song";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Song";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Pad";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Pad";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Visible = false;
             // 
             // frmServerMediaPlayer
             // 
@@ -902,13 +903,13 @@ namespace WinAppMediaPlayerVersie2
             this.tabPlaylist.ResumeLayout(false);
             this.pnlDatabase.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.playListDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playListBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataMediaPlayerDataSet)).EndInit();
             this.pnlDatabaseKnoppen.ResumeLayout(false);
             this.pnlDatabaseKnoppen.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.playListBindingNavigator)).EndInit();
             this.playListBindingNavigator.ResumeLayout(false);
             this.playListBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.playListBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataMediaPlayerDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

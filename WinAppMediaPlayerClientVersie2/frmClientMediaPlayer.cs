@@ -215,5 +215,10 @@ namespace WinAppMediaPlayerClientVersie2
 
             }
         }
+
+        private void frmClientMediaPlayer_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

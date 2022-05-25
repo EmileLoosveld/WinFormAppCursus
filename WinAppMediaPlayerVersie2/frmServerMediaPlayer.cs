@@ -334,6 +334,8 @@ namespace WinAppMediaPlayerVersie2
                 this.playListTableAdapter.FillByPlayListNaam(this.dataMediaPlayerDataSet.PlayList, cmbPlayList.Text);
                 playListDataGridView.Visible = true;
                 playListDataGridView.Enabled = true;
+                playListBindingNavigator.Enabled = true;
+                bindingNavigatorDeleteItem.Enabled = true;
             }
             else
             {
@@ -345,9 +347,11 @@ namespace WinAppMediaPlayerVersie2
         {
             if (!(cmbPlayList.Text == String.Empty))
             {
+                List<string> lied = playListDataGridView.Rows.OfType<DataGridViewRow>().Select(x => x.Cells[2].Value.ToString()).ToList();
                 foreach (string playlistSong in lstPlaylistSongs.Items)
                 {
-                    this.playListTableAdapter.InsertQuery(cmbPlayList.Text, playlistSong.ToString(), Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "muziek") + "\\" + playlistSong.ToString() + ".mp3");
+                    if (!lied.Contains(playlistSong))
+                        this.playListTableAdapter.InsertQuery(cmbPlayList.Text, playlistSong.ToString(), Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "muziek") + "\\" + playlistSong.ToString() + ".mp3");
                 }
                 comboBoxLaden();
                 this.playListTableAdapter.FillByPlayListNaam(this.dataMediaPlayerDataSet.PlayList, cmbPlayList.Text);
@@ -357,11 +361,41 @@ namespace WinAppMediaPlayerVersie2
             {
                 MessageBox.Show("Vul een naam in in de combobox!");
             }
+            bindingNavigatorDeleteItem.Enabled = true;
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            lstPlaylistSongs.Items.Clear();
+            if(lstPlaylistSongs.Items.Count != 0)
+            {
+                for (int count = 0; count != lstPlaylistSongs.Items.Count - 1; count++)
+                {
+                    string song = lstPlaylistSongs.Items[count].ToString();
+                    //verwijderen uit Playlist
+                    WMPLib.IWMPMedia listItem = Player.currentPlaylist.get_Item(count);
+                    Player.currentPlaylist.removeItem(listItem);
+                    //doorsturen naar Client
+                }
+                if (client != null && client.Connected) Writer.WriteLine("PLAYLISTCLEAR");
 
+            }
+            lstPlaylistSongs.Items.Clear();
+            List<string> lied = playListDataGridView.Rows.OfType<DataGridViewRow>().Select(x => x.Cells[2].Value.ToString()).ToList();
+            bool foutmelding = false;
+            foreach (string song in lied)
+            {
+                if (lstAlleSongs.Items.Contains(song))
+                {
+                    lstPlaylistSongs.Items.Add(song);
+                    string padsong = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "muziek") + "\\" + song.ToString() + ".mp3";
+                    Player.currentPlaylist.appendItem(Player.newMedia(padsong));
+                    //doorsturen naar Client als verbonden
+                    if (client != null && client.Connected) Writer.WriteLine("PLAYLISTADD" + song.ToString());
+                }
+                else
+                    foutmelding = true;
+            }
+            if (foutmelding == true)
+                MessageBox.Show("één of meerdere songs zijn niet aangewezig in de songlist! Deze zijn niet toegevoegd aan de playlist!");
         }
         #endregion
 
@@ -380,6 +414,17 @@ namespace WinAppMediaPlayerVersie2
 
         }
 
-        
+        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.playListBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.dataMediaPlayerDataSet);
+            if (playListDataGridView.Rows.Count == 0)
+            {
+                comboBoxLaden();
+                playListDataGridView.Visible = false;
+                cmbPlayList.Text = String.Empty;
+            }
+        }
     }
 }
